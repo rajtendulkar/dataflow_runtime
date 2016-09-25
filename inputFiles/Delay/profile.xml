@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3" numChannels="2">
+		<actor instances="1" name="IntSource"  function="IntSource"  numPorts="1"/>
+		<actor instances="1" name="Delay"      function="Delay"      numPorts="2"/>
+		<actor instances="1" name="IntPrinter" function="IntPrinter" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="2">
+		<channel name="SRC2DELAY"   channelSize="6" tokenSize="4" srcActor="IntSource" srcPort="0" srcPortRate="1" dstActor="Delay"      dstPort="0" dstPortRate="1"/>
+		<channel name="DELAY2PRINT" channelSize="6" initialTokens="5" tokenSize="4" srcActor="Delay"     srcPort="1" srcPortRate="1" dstActor="IntPrinter" dstPort="0" dstPortRate="1"/>	
+	</graphChannels>		
+	
+	<schedule size="1">
+		<cluster id="0" size="3">
+			<processor id="0" size="1">
+				<actor instance="0" name="IntSource"/>
+			</processor>
+			
+			<processor id="1" size="1">
+				<actor instance="0" name="Delay"/>
+			</processor>
+			
+			<processor id="2" size="1">
+				<actor instance="0" name="IntPrinter"/>
+			</processor>
+				
+		</cluster>
+	</schedule>
+	
+	<fifoallocation size="2">
+		<fifo name="SRC2DELAY"   fifoSize="6" srcCluster="0" dstCluster="0"/>
+		<fifo name="DELAY2PRINT" fifoSize="6" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

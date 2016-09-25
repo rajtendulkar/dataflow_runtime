@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3">
+		<actor instances="2" name="source" function="source" numPorts="1"/>
+		<actor instances="1" name="lowPassFilter" function="lowPassFilter" numPorts="2" />
+		<actor instances="1" name="printer" function="printer" numPorts="1"/>
+	</graphActors>
+	<graphChannels size="2">
+		<channel channelSize="64" srcPortRate="1" dstPortRate="2" peekRate="64" dstActor="lowPassFilter" dstPort="0" name="src2lpf" srcActor="source" srcPort="0" tokenSize="4"/>
+		<channel channelSize="1" srcPortRate="1" dstPortRate="1" dstActor="printer" dstPort="0" name="lpf2print" srcActor="lowPassFilter" srcPort="1" tokenSize="4"/>
+	</graphChannels>
+	
+	<preschedule size="1">
+		<cluster id = "0" size="2">
+			<processor id="0" size="31">
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+			</processor>
+			<processor id="1" size="31">
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="source"/>
+			</processor>
+		</cluster>
+	</preschedule>
+	
+	<schedule size="1">
+		<cluster id = "0" size="2">
+			<processor id="0" size="2">
+				<actor instance="0" name="source"/>
+				<actor instance="1" name="source"/>
+			</processor>
+			<processor id="1" size="2">
+					<actor instance="0" name="lowPassFilter"/>
+					<actor instance="0" name="printer"/>
+			</processor>					
+		</cluster>
+	</schedule>
+
+	<fifoallocation size="2">
+		<fifo name="src2lpf" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="lpf2print" srcCluster="0" dstCluster="0" fifoSize="1"/>
+	</fifoallocation>
+</mapping>

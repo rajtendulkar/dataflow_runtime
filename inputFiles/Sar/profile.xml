@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+
+	<graphActors size="12">
+		<actor instances="1" name="fastFilter"				function="fastFilter" 			numPorts="1"/>
+		<actor instances="1" name="genRawSar" 				function="genRawSar" 			numPorts="1"/>
+		<actor instances="1" name="FTX2D-gen2join"	 		function="FTX2D-gen2join" 		numPorts="2"/>
+
+		<actor instances="1" name="joinFilter" 				function="joinFilter" 			numPorts="3"/>
+
+		<actor instances="1" name="compression" 			function="compression" 			numPorts="2"/>
+		<actor instances="1" name="FTY2D-comp2padd" 		function="FTY2D-comp2padd" 		numPorts="2"/>
+		
+		<actor instances="1" name="zeroPadding" 			function="zeroPadding" 			numPorts="2"/>
+		<actor instances="1" name="iFTY2D-padd2decomp" 		function="iFTY2D-padd2decomp" 	numPorts="2"/>
+
+		<actor instances="1" name="decompression" 			function="decompression" 		numPorts="2"/>
+		<actor instances="1" name="FTY2D-decomp2reconst" 	function="FTY2D-decomp2reconst" numPorts="2"/>
+		
+		<actor instances="1" name="reconstruction"	 		function="reconstruction" 		numPorts="2"/>
+		<actor instances="1" name="printer" 				function="printer" 				numPorts="1"/>
+	</graphActors>
+	
+	<graphChannels size="11">
+		<channel channelSize="438"    srcPortRate="438" dstPortRate="438" dstActor="joinFilter" 			dstPort="1" name="fast2join" 		srcActor="fastFilter" 			srcPort="0" tokenSize="8"/>
+		<channel channelSize="70080"  srcPortRate="70080" dstPortRate="70080" dstActor="FTX2D-gen2join" 		dstPort="0" name="gen2FTX2D"  		srcActor="genRawSar" 			srcPort="0" tokenSize="8"/>
+		<channel channelSize="70080"  srcPortRate="70080" dstPortRate="70080" dstActor="joinFilter"	 			dstPort="0" name="FTX2D2join"  		srcActor="FTX2D-gen2join" 		srcPort="1" tokenSize="8"/>
+		
+		
+		<channel channelSize="70080"  srcPortRate="70080" dstPortRate="70080" dstActor="compression" 			dstPort="0" name="join2comp" 		srcActor="joinFilter" 			srcPort="2" tokenSize="8"/>
+		<channel channelSize="70080"  srcPortRate="70080" dstPortRate="70080" dstActor="FTY2D-comp2padd" 		dstPort="0" name="comp2FTY2D" 		srcActor="compression" 			srcPort="1" tokenSize="8"/>
+
+		<channel channelSize="70080"  srcPortRate="70080" dstPortRate="70080" dstActor="zeroPadding" 			dstPort="0" name="FTY2D2padd" 		srcActor="FTY2D-comp2padd" 		srcPort="1" tokenSize="8"/>
+		<channel channelSize="167316" srcPortRate="167316" dstPortRate="167316" dstActor="iFTY2D-padd2decomp" 	dstPort="0" name="padd2iFTY2D" 		srcActor="zeroPadding" 			srcPort="1" tokenSize="8"/>
+
+		<channel channelSize="167316" srcPortRate="167316" dstPortRate="167316" dstActor="decompression" 			dstPort="0" name="iFTY2D2decomp" 	srcActor="iFTY2D-padd2decomp" 	srcPort="1" tokenSize="8"/>
+		<channel channelSize="167316" srcPortRate="167316" dstPortRate="167316" dstActor="FTY2D-decomp2reconst" 	dstPort="0" name="decomp2FTY2D"		srcActor="decompression" 		srcPort="1" tokenSize="8"/>
+
+		<channel channelSize="167316" srcPortRate="167316" dstPortRate="167316" dstActor="reconstruction"			dstPort="0" name="FTY2D2reconst" 	srcActor="FTY2D-decomp2reconst" srcPort="1" tokenSize="8"/>
+		<channel channelSize="101612" srcPortRate="101612" dstPortRate="101612" dstActor="printer" 				dstPort="0" name="reconst2print" 	srcActor="reconstruction" 		srcPort="1" tokenSize="4"/>
+	</graphChannels>
+	<schedule size="1">
+		<cluster id = "0" size="4">
+			<processor id="0" size="4">
+				<actor instance="0" name="fastFilter"/>
+				<actor instance="0" name="joinFilter"/>
+				<actor instance="0" name="reconstruction"/>
+				<actor instance="0" name="printer"/>
+			</processor>
+			<processor id="1" size="3">
+				<actor instance="0" name="genRawSar"/>
+				<actor instance="0" name="compression"/>
+				<actor instance="0" name="decompression"/>
+			</processor>
+			<processor id="2" size="3">
+				<actor instance="0" name="FTX2D-gen2join"/>
+				<actor instance="0" name="FTY2D-comp2padd"/>
+				<actor instance="0" name="iFTY2D-padd2decomp"/>
+			</processor>
+			<processor id="3" size="2">
+				<actor instance="0" name="zeroPadding"/>
+				<actor instance="0" name="FTY2D-decomp2reconst"/>
+			</processor>
+			
+		</cluster>
+	</schedule>
+	<fifoallocation size="11">
+		<fifo name="fast2join" 		srcCluster="0" dstCluster="0" fifoSize="438"/>
+		<fifo name="gen2FTX2D" 		srcCluster="0" dstCluster="0" fifoSize="70080"/>
+		<fifo name="FTX2D2join"		srcCluster="0" dstCluster="0" fifoSize="70080"/>
+		
+		<fifo name="join2comp" 		srcCluster="0" dstCluster="0" fifoSize="70080"/>
+		<fifo name="comp2FTY2D" 	srcCluster="0" dstCluster="0" fifoSize="70080"/>
+
+		<fifo name="FTY2D2padd" 	srcCluster="0" dstCluster="0" fifoSize="70080"/>
+		<fifo name="padd2iFTY2D" 	srcCluster="0" dstCluster="0" fifoSize="167316"/>
+
+		<fifo name="iFTY2D2decomp" 	srcCluster="0" dstCluster="0" fifoSize="167316"/>
+		<fifo name="decomp2FTY2D" 	srcCluster="0" dstCluster="0" fifoSize="167316"/>
+
+		<fifo name="FTY2D2reconst" 	srcCluster="0" dstCluster="0" fifoSize="167316"/>
+		<fifo name="reconst2print" 	srcCluster="0" dstCluster="0" fifoSize="101612"/>
+	</fifoallocation>
+</mapping>

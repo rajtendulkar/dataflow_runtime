@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="2"> 
+		<actor instances="8" name="producer" function="producer" numPorts="1"/>
+		<actor instances="8" name="consumer" function="consumer" numPorts="1"/>
+	</graphActors>
+	<graphChannels size="1">
+		<channel channelSize="4" dstActor="consumer" dstPort="0" dstPortRate="1" name="prod2cons" srcActor="producer" srcPort="0" srcPortRate="1" tokenSize="5"/>
+	</graphChannels>
+	<schedule size="1">
+		<cluster id = "0" size="4">
+			<processor id="0" size="4">
+				<actor instance="0" name="producer"/>
+				<actor instance="1" name="producer"/>
+				<actor instance="2" name="producer"/>
+				<actor instance="3" name="producer"/>
+			</processor>
+			<processor id="1" size="4">
+				<actor instance="4" name="producer"/>
+				<actor instance="5" name="producer"/>
+				<actor instance="6" name="producer"/>
+				<actor instance="7" name="producer"/>
+			</processor>
+			<processor id="2" size="4">
+				<actor instance="0" name="consumer"/>
+				<actor instance="1" name="consumer"/>
+				<actor instance="2" name="consumer"/>
+				<actor instance="3" name="consumer"/>
+			</processor>
+			<processor id="3" size="4">
+				<actor instance="4" name="consumer"/>
+				<actor instance="5" name="consumer"/>
+				<actor instance="6" name="consumer"/>
+				<actor instance="7" name="consumer"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="1">
+		<fifo name="prod2cons" srcCluster="0" dstCluster="0" fifoSize="4"/>
+	</fifoallocation>
+</mapping>

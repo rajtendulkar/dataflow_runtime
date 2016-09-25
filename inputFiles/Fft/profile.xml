@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="13"> 
+		<actor instances="2" name="Source" function="Source" numPorts="1"/>
+		<actor instances="2" name="FftReorder64" function="FftReorder0" numPorts="2"/>
+		<actor instances="4" name="FftReorder32" function="FftReorder1" numPorts="2"/>
+		<actor instances="8" name="FftReorder16" function="FftReorder2" numPorts="2"/>
+		<actor instances="16" name="FftReorder8" function="FftReorder3" numPorts="2"/>
+		<actor instances="32" name="FftReorder4" function="FftReorder4" numPorts="2"/>
+		<actor instances="64" name="CombineDft2" function="CombineDft0" numPorts="2"/>
+		<actor instances="32" name="CombineDft4" function="CombineDft1" numPorts="2"/>
+		<actor instances="16" name="CombineDft8" function="CombineDft2" numPorts="2"/>
+		<actor instances="8" name="CombineDft16" function="CombineDft3" numPorts="2"/>
+		<actor instances="4" name="CombineDft32" function="CombineDft4" numPorts="2"/>
+		<actor instances="2" name="CombineDft64" function="CombineDft5" numPorts="2"/>
+		<actor instances="2" name="Output" function="Output" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="12">
+		<channel name="chnnl0" channelSize="256"   tokenSize="4" srcActor="Source" 	   	   srcPort="0" srcPortRate="128"  dstActor="FftReorder64"  dstPort="0" dstPortRate="128"/>
+		<channel name="chnnl1" channelSize="256"   tokenSize="4" srcActor="FftReorder64"   srcPort="1" srcPortRate="128"  dstActor="FftReorder32"  dstPort="0" dstPortRate="64"/>
+		<channel name="chnnl2" channelSize="256"   tokenSize="4" srcActor="FftReorder32"   srcPort="1" srcPortRate="64"   dstActor="FftReorder16"  dstPort="0" dstPortRate="32"/>
+		<channel name="chnnl3" channelSize="256"   tokenSize="4" srcActor="FftReorder16"   srcPort="1" srcPortRate="32"   dstActor="FftReorder8"   dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl4" channelSize="256"   tokenSize="4" srcActor="FftReorder8"    srcPort="1" srcPortRate="16"   dstActor="FftReorder4"   dstPort="0" dstPortRate="8"/>
+		<channel name="chnnl5" channelSize="256"   tokenSize="4" srcActor="FftReorder4"    srcPort="1" srcPortRate="8"    dstActor="CombineDft2"   dstPort="0" dstPortRate="4"/>
+		<channel name="chnnl6" channelSize="256"   tokenSize="4" srcActor="CombineDft2"    srcPort="1" srcPortRate="4"    dstActor="CombineDft4"   dstPort="0" dstPortRate="8"/>
+		<channel name="chnnl7" channelSize="256"   tokenSize="4" srcActor="CombineDft4"    srcPort="1" srcPortRate="8"    dstActor="CombineDft8"   dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl8" channelSize="256"   tokenSize="4" srcActor="CombineDft8"    srcPort="1" srcPortRate="16"   dstActor="CombineDft16"  dstPort="0" dstPortRate="32"/>
+		<channel name="chnnl9" channelSize="256"   tokenSize="4" srcActor="CombineDft16"   srcPort="1" srcPortRate="32"   dstActor="CombineDft32"  dstPort="0" dstPortRate="64"/>
+		<channel name="chnnl10" channelSize="256"  tokenSize="4" srcActor="CombineDft32"   srcPort="1" srcPortRate="64"   dstActor="CombineDft64"  dstPort="0" dstPortRate="128"/>
+		<channel name="chnnl11" channelSize="256"  tokenSize="4" srcActor="CombineDft64"   srcPort="1" srcPortRate="128"  dstActor="Output"   	   dstPort="0" dstPortRate="128"/>
+	</graphChannels>
+
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="192">
+				<actor instance="0" name="Source"/>
+				<actor instance="1" name="Source"/>
+				<actor instance="0" name="FftReorder64"/>
+				<actor instance="1" name="FftReorder64"/>
+				<actor instance="0" name="FftReorder32"/>
+				<actor instance="1" name="FftReorder32"/>
+				<actor instance="2" name="FftReorder32"/>
+				<actor instance="3" name="FftReorder32"/>
+				<actor instance="0" name="FftReorder16"/>
+				<actor instance="1" name="FftReorder16"/>
+				<actor instance="2" name="FftReorder16"/>
+				<actor instance="3" name="FftReorder16"/>
+				<actor instance="4" name="FftReorder16"/>
+				<actor instance="5" name="FftReorder16"/>
+				<actor instance="6" name="FftReorder16"/>
+				<actor instance="7" name="FftReorder16"/>
+				<actor instance="0" name="FftReorder8"/>
+				<actor instance="1" name="FftReorder8"/>
+				<actor instance="2" name="FftReorder8"/>
+				<actor instance="3" name="FftReorder8"/>
+				<actor instance="4" name="FftReorder8"/>
+				<actor instance="5" name="FftReorder8"/>
+				<actor instance="6" name="FftReorder8"/>
+				<actor instance="7" name="FftReorder8"/>
+				<actor instance="8" name="FftReorder8"/>
+				<actor instance="9" name="FftReorder8"/>
+				<actor instance="10" name="FftReorder8"/>
+				<actor instance="11" name="FftReorder8"/>
+				<actor instance="12" name="FftReorder8"/>
+				<actor instance="13" name="FftReorder8"/>
+				<actor instance="14" name="FftReorder8"/>
+				<actor instance="15" name="FftReorder8"/>
+				<actor instance="0" name="FftReorder4"/>
+				<actor instance="1" name="FftReorder4"/>
+				<actor instance="2" name="FftReorder4"/>
+				<actor instance="3" name="FftReorder4"/>
+				<actor instance="4" name="FftReorder4"/>
+				<actor instance="5" name="FftReorder4"/>
+				<actor instance="6" name="FftReorder4"/>
+				<actor instance="7" name="FftReorder4"/>
+				<actor instance="8" name="FftReorder4"/>
+				<actor instance="9" name="FftReorder4"/>
+				<actor instance="10" name="FftReorder4"/>
+				<actor instance="11" name="FftReorder4"/>
+				<actor instance="12" name="FftReorder4"/>
+				<actor instance="13" name="FftReorder4"/>
+				<actor instance="14" name="FftReorder4"/>
+				<actor instance="15" name="FftReorder4"/>
+				<actor instance="16" name="FftReorder4"/>
+				<actor instance="17" name="FftReorder4"/>
+				<actor instance="18" name="FftReorder4"/>
+				<actor instance="19" name="FftReorder4"/>
+				<actor instance="20" name="FftReorder4"/>
+				<actor instance="21" name="FftReorder4"/>
+				<actor instance="22" name="FftReorder4"/>
+				<actor instance="23" name="FftReorder4"/>
+				<actor instance="24" name="FftReorder4"/>
+				<actor instance="25" name="FftReorder4"/>
+				<actor instance="26" name="FftReorder4"/>
+				<actor instance="27" name="FftReorder4"/>
+				<actor instance="28" name="FftReorder4"/>
+				<actor instance="29" name="FftReorder4"/>
+				<actor instance="30" name="FftReorder4"/>
+				<actor instance="31" name="FftReorder4"/>
+				<actor instance="0" name="CombineDft2"/>
+				<actor instance="1" name="CombineDft2"/>
+				<actor instance="2" name="CombineDft2"/>
+				<actor instance="3" name="CombineDft2"/>
+				<actor instance="4" name="CombineDft2"/>
+				<actor instance="5" name="CombineDft2"/>
+				<actor instance="6" name="CombineDft2"/>
+				<actor instance="7" name="CombineDft2"/>
+				<actor instance="8" name="CombineDft2"/>
+				<actor instance="9" name="CombineDft2"/>
+				<actor instance="10" name="CombineDft2"/>
+				<actor instance="11" name="CombineDft2"/>
+				<actor instance="12" name="CombineDft2"/>
+				<actor instance="13" name="CombineDft2"/>
+				<actor instance="14" name="CombineDft2"/>
+				<actor instance="15" name="CombineDft2"/>
+				<actor instance="16" name="CombineDft2"/>
+				<actor instance="17" name="CombineDft2"/>
+				<actor instance="18" name="CombineDft2"/>
+				<actor instance="19" name="CombineDft2"/>
+				<actor instance="20" name="CombineDft2"/>
+				<actor instance="21" name="CombineDft2"/>
+				<actor instance="22" name="CombineDft2"/>
+				<actor instance="23" name="CombineDft2"/>
+				<actor instance="24" name="CombineDft2"/>
+				<actor instance="25" name="CombineDft2"/>
+				<actor instance="26" name="CombineDft2"/>
+				<actor instance="27" name="CombineDft2"/>
+				<actor instance="28" name="CombineDft2"/>
+				<actor instance="29" name="CombineDft2"/>
+				<actor instance="30" name="CombineDft2"/>
+				<actor instance="31" name="CombineDft2"/>
+				<actor instance="32" name="CombineDft2"/>
+				<actor instance="33" name="CombineDft2"/>
+				<actor instance="34" name="CombineDft2"/>
+				<actor instance="35" name="CombineDft2"/>
+				<actor instance="36" name="CombineDft2"/>
+				<actor instance="37" name="CombineDft2"/>
+				<actor instance="38" name="CombineDft2"/>
+				<actor instance="39" name="CombineDft2"/>
+				<actor instance="40" name="CombineDft2"/>
+				<actor instance="41" name="CombineDft2"/>
+				<actor instance="42" name="CombineDft2"/>
+				<actor instance="43" name="CombineDft2"/>
+				<actor instance="44" name="CombineDft2"/>
+				<actor instance="45" name="CombineDft2"/>
+				<actor instance="46" name="CombineDft2"/>
+				<actor instance="47" name="CombineDft2"/>
+				<actor instance="48" name="CombineDft2"/>
+				<actor instance="49" name="CombineDft2"/>
+				<actor instance="50" name="CombineDft2"/>
+				<actor instance="51" name="CombineDft2"/>
+				<actor instance="52" name="CombineDft2"/>
+				<actor instance="53" name="CombineDft2"/>
+				<actor instance="54" name="CombineDft2"/>
+				<actor instance="55" name="CombineDft2"/>
+				<actor instance="56" name="CombineDft2"/>
+				<actor instance="57" name="CombineDft2"/>
+				<actor instance="58" name="CombineDft2"/>
+				<actor instance="59" name="CombineDft2"/>
+				<actor instance="60" name="CombineDft2"/>
+				<actor instance="61" name="CombineDft2"/>
+				<actor instance="62" name="CombineDft2"/>
+				<actor instance="63" name="CombineDft2"/>
+				<actor instance="0" name="CombineDft4"/>
+				<actor instance="1" name="CombineDft4"/>
+				<actor instance="2" name="CombineDft4"/>
+				<actor instance="3" name="CombineDft4"/>
+				<actor instance="4" name="CombineDft4"/>
+				<actor instance="5" name="CombineDft4"/>
+				<actor instance="6" name="CombineDft4"/>
+				<actor instance="7" name="CombineDft4"/>
+				<actor instance="8" name="CombineDft4"/>
+				<actor instance="9" name="CombineDft4"/>
+				<actor instance="10" name="CombineDft4"/>
+				<actor instance="11" name="CombineDft4"/>
+				<actor instance="12" name="CombineDft4"/>
+				<actor instance="13" name="CombineDft4"/>
+				<actor instance="14" name="CombineDft4"/>
+				<actor instance="15" name="CombineDft4"/>
+				<actor instance="16" name="CombineDft4"/>
+				<actor instance="17" name="CombineDft4"/>
+				<actor instance="18" name="CombineDft4"/>
+				<actor instance="19" name="CombineDft4"/>
+				<actor instance="20" name="CombineDft4"/>
+				<actor instance="21" name="CombineDft4"/>
+				<actor instance="22" name="CombineDft4"/>
+				<actor instance="23" name="CombineDft4"/>
+				<actor instance="24" name="CombineDft4"/>
+				<actor instance="25" name="CombineDft4"/>
+				<actor instance="26" name="CombineDft4"/>
+				<actor instance="27" name="CombineDft4"/>
+				<actor instance="28" name="CombineDft4"/>
+				<actor instance="29" name="CombineDft4"/>
+				<actor instance="30" name="CombineDft4"/>
+				<actor instance="31" name="CombineDft4"/>
+				<actor instance="0" name="CombineDft8"/>
+				<actor instance="1" name="CombineDft8"/>
+				<actor instance="2" name="CombineDft8"/>
+				<actor instance="3" name="CombineDft8"/>
+				<actor instance="4" name="CombineDft8"/>
+				<actor instance="5" name="CombineDft8"/>
+				<actor instance="6" name="CombineDft8"/>
+				<actor instance="7" name="CombineDft8"/>
+				<actor instance="8" name="CombineDft8"/>
+				<actor instance="9" name="CombineDft8"/>
+				<actor instance="10" name="CombineDft8"/>
+				<actor instance="11" name="CombineDft8"/>
+				<actor instance="12" name="CombineDft8"/>
+				<actor instance="13" name="CombineDft8"/>
+				<actor instance="14" name="CombineDft8"/>
+				<actor instance="15" name="CombineDft8"/>
+				<actor instance="0" name="CombineDft16"/>
+				<actor instance="1" name="CombineDft16"/>
+				<actor instance="2" name="CombineDft16"/>
+				<actor instance="3" name="CombineDft16"/>
+				<actor instance="4" name="CombineDft16"/>
+				<actor instance="5" name="CombineDft16"/>
+				<actor instance="6" name="CombineDft16"/>
+				<actor instance="7" name="CombineDft16"/>
+				<actor instance="0" name="CombineDft32"/>
+				<actor instance="1" name="CombineDft32"/>
+				<actor instance="2" name="CombineDft32"/>
+				<actor instance="3" name="CombineDft32"/>
+				<actor instance="0" name="CombineDft64"/>
+				<actor instance="1" name="CombineDft64"/>
+				<actor instance="0" name="Output"/>
+				<actor instance="1" name="Output"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="12">
+		<fifo name="chnnl0"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl1"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl2"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl3"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl4"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl5"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl6"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl7"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl8"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl9"  fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl10" fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+		<fifo name="chnnl11" fifoSize="256"  srcCluster="0" dstCluster="0"/> 
+	</fifoallocation>
+</mapping>

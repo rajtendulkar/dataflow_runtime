@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="6"> 
+		<actor instances="1" name="Source" function="Source" numPorts="1"/>
+		<actor instances="1" name="JumpSort8" function="JumpSort0" numPorts="2"/>
+		<actor instances="1" name="JumpSort4" function="JumpSort1" numPorts="2"/>
+		<actor instances="1" name="JumpSort2" function="JumpSort2" numPorts="2"/>
+		<actor instances="1" name="JumpSort1" function="JumpSort3" numPorts="2"/>
+		<actor instances="1" name="Output" function="Output" numPorts="1"/>
+	</graphActors>
+	<graphChannels size="5">
+		<channel name="ch0"	 channelSize="16" tokenSize="4" srcActor="Source" 	 srcPort="0" srcPortRate="16" dstActor="JumpSort8"   dstPort="0" dstPortRate="16"/>
+		<channel name="ch1"	 channelSize="16" tokenSize="4" srcActor="JumpSort8" srcPort="1" srcPortRate="16"  dstActor="JumpSort4"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch2"	 channelSize="16" tokenSize="4" srcActor="JumpSort4" srcPort="1" srcPortRate="16"  dstActor="JumpSort2"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch3"	 channelSize="16" tokenSize="4" srcActor="JumpSort2" srcPort="1" srcPortRate="16"  dstActor="JumpSort1"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch4" channelSize="16" tokenSize="4" srcActor="JumpSort1" srcPort="1" srcPortRate="16"  dstActor="Output"  	 dstPort="0" dstPortRate="16"/>
+	</graphChannels>
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="6">
+				<actor instance="0" name="Source"/>
+				<actor instance="0" name="JumpSort8"/>
+				<actor instance="0" name="JumpSort4"/>
+				<actor instance="0" name="JumpSort2"/>
+				<actor instance="0" name="JumpSort1"/>
+				<actor instance="0" name="Output"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="5">
+		<fifo name="ch0" fifoSize="16" srcCluster="0" dstCluster="0"/> 
+		<fifo name="ch1" fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch2" fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch3" fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch4" fifoSize="16" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

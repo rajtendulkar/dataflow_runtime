@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="8">
+		<actor instances="12" name="InputGenerate" function="InputGenerate" numPorts="1"/>
+		<actor instances="12" name="BeamFirFilter0" function="BeamFirFilter0" numPorts="2"/>
+		<actor instances="12" name="BeamFirFilter1" function="BeamFirFilter1" numPorts="2"/>
+		<actor instances="1" name="Duplicator" function="Duplicator" numPorts="2"/>
+		<actor instances="4" name="BeamForm" function="BeamForm" numPorts="2"/>
+		<actor instances="4" name="BeamFirFilter2" function="BeamFirFilter2" numPorts="2"/>
+		<actor instances="4" name="Magnitude" function="Magnitude" numPorts="2"/>
+		<actor instances="4" name="Detector" function="Detector" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="7">
+		<channel name="input2beamFir" channelSize="48" srcActor="InputGenerate" srcPort="0" srcPortRate="4" dstActor="BeamFirFilter0" dstPort="0" dstPortRate="4" tokenSize="4"/>
+		<channel name="beam2beam" channelSize="48" srcActor="BeamFirFilter0" srcPort="1" srcPortRate="4" dstActor="BeamFirFilter1" dstPort="0" dstPortRate="4" tokenSize="4"/>
+		<channel name="beam2dupli" channelSize="24" srcActor="BeamFirFilter1" srcPort="1" srcPortRate="2" dstActor="Duplicator" dstPort="0" dstPortRate="24" tokenSize="4"/>
+		<channel name="dupli2beamForm" channelSize="96" srcActor="Duplicator" srcPort="1" srcPortRate="96" dstActor="BeamForm" dstPort="0" dstPortRate="24" tokenSize="4"/>
+		<channel name="beamForm2beamFir" channelSize="8" srcActor="BeamForm" srcPort="1" srcPortRate="2" dstActor="BeamFirFilter2" dstPort="0" dstPortRate="2" tokenSize="4"/>
+		<channel name="beamFir2magni" channelSize="8" srcActor="BeamFirFilter2" srcPort="1" srcPortRate="2" dstActor="Magnitude" dstPort="0" dstPortRate="2" tokenSize="4"/>
+		<channel name="magni2detect" channelSize="4" srcActor="Magnitude" srcPort="1" srcPortRate="1" dstActor="Detector" dstPort="0" dstPortRate="1" tokenSize="4"/>
+	</graphChannels>
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="53">
+				<actor instance="0" name="InputGenerate"/>
+				<actor instance="1" name="InputGenerate"/>
+				<actor instance="2" name="InputGenerate"/>
+				<actor instance="3" name="InputGenerate"/>
+				<actor instance="4" name="InputGenerate"/>
+				<actor instance="5" name="InputGenerate"/>
+				<actor instance="6" name="InputGenerate"/>
+				<actor instance="7" name="InputGenerate"/>
+				<actor instance="8" name="InputGenerate"/>
+				<actor instance="9" name="InputGenerate"/>
+				<actor instance="10" name="InputGenerate"/>
+				<actor instance="11" name="InputGenerate"/>
+				<actor instance="0" name="BeamFirFilter0"/>
+				<actor instance="1" name="BeamFirFilter0"/>
+				<actor instance="2" name="BeamFirFilter0"/>
+				<actor instance="3" name="BeamFirFilter0"/>
+				<actor instance="4" name="BeamFirFilter0"/>
+				<actor instance="5" name="BeamFirFilter0"/>
+				<actor instance="6" name="BeamFirFilter0"/>
+				<actor instance="7" name="BeamFirFilter0"/>
+				<actor instance="8" name="BeamFirFilter0"/>
+				<actor instance="9" name="BeamFirFilter0"/>
+				<actor instance="10" name="BeamFirFilter0"/>
+				<actor instance="11" name="BeamFirFilter0"/>
+				<actor instance="0" name="BeamFirFilter1"/>
+				<actor instance="1" name="BeamFirFilter1"/>
+				<actor instance="2" name="BeamFirFilter1"/>
+				<actor instance="3" name="BeamFirFilter1"/>
+				<actor instance="4" name="BeamFirFilter1"/>
+				<actor instance="5" name="BeamFirFilter1"/>
+				<actor instance="6" name="BeamFirFilter1"/>
+				<actor instance="7" name="BeamFirFilter1"/>
+				<actor instance="8" name="BeamFirFilter1"/>
+				<actor instance="9" name="BeamFirFilter1"/>
+				<actor instance="10" name="BeamFirFilter1"/>
+				<actor instance="11" name="BeamFirFilter1"/>
+				<actor instance="0" name="Duplicator"/>
+				<actor instance="0" name="BeamForm"/>
+				<actor instance="1" name="BeamForm"/>
+				<actor instance="2" name="BeamForm"/>
+				<actor instance="3" name="BeamForm"/>
+				<actor instance="0" name="BeamFirFilter2"/>
+				<actor instance="1" name="BeamFirFilter2"/>
+				<actor instance="2" name="BeamFirFilter2"/>
+				<actor instance="3" name="BeamFirFilter2"/>
+				<actor instance="0" name="Magnitude"/>
+				<actor instance="1" name="Magnitude"/>
+				<actor instance="2" name="Magnitude"/>
+				<actor instance="3" name="Magnitude"/>
+				<actor instance="0" name="Detector"/>
+				<actor instance="1" name="Detector"/>
+				<actor instance="2" name="Detector"/>
+				<actor instance="3" name="Detector"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="7">
+		<fifo name="input2beamFir" fifoSize="48" srcCluster="0" dstCluster="0"/>
+		<fifo name="beam2beam" fifoSize="48" srcCluster="0" dstCluster="0"/>
+		<fifo name="beam2dupli" fifoSize="24" srcCluster="0" dstCluster="0"/>
+		<fifo name="dupli2beamForm" fifoSize="96" srcCluster="0" dstCluster="0"/>
+		<fifo name="beamForm2beamFir" fifoSize="8" srcCluster="0" dstCluster="0"/>
+		<fifo name="beamFir2magni" fifoSize="8" srcCluster="0" dstCluster="0" />
+		<fifo name="magni2detect" fifoSize="4" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

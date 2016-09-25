@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3">
+		<actor instances="1" name="DctInputGenerate" function="DctInputGenerate" numPorts="1"/>
+		<actor instances="1" name="Dct2DCoarse" function="Dct2DCoarse" numPorts="2"/>
+		<actor instances="1" name="DctPrintOutput" function="DctPrintOutput" numPorts="1"/>
+	</graphActors>
+	<graphChannels size="2">
+		<channel channelSize="64" dstActor="Dct2DCoarse" dstPort="0" dstPortRate="64" name="INPUT2DCT" srcActor="DctInputGenerate" srcPort="0" srcPortRate="64" tokenSize="4"/>
+		<channel channelSize="64" dstActor="DctPrintOutput" dstPort="0" dstPortRate="64" name="DCT2OUTPUT" srcActor="Dct2DCoarse" srcPort="1" srcPortRate="64" tokenSize="4"/>
+	</graphChannels>
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="3">
+				<actor instance="0" name="DctInputGenerate"/>
+				<actor instance="0" name="Dct2DCoarse"/>
+				<actor instance="0" name="DctPrintOutput"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="2">
+		<fifo name="INPUT2DCT" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="DCT2OUTPUT" srcCluster="0" dstCluster="0" fifoSize="64"/>
+	</fifoallocation>
+</mapping>

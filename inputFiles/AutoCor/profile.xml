@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3" numChannels="2">
+		<actor instances="256" name="Source"  function="Source"  numPorts="1"/>
+		<actor instances="1" name="AutoCor" function="AutoCor" numPorts="2"/>
+		<actor instances="8" name="Printer" function="Printer" numPorts="1"/>
+	</graphActors>
+	
+	<graphChannels size="2">
+		<channel name="src2cor"   channelSize="256" tokenSize="4" srcActor="Source"  srcPort="0" srcPortRate="1" dstActor="AutoCor" dstPort="0" dstPortRate="256"/>
+		<channel name="cor2print" channelSize="8"   tokenSize="4" srcActor="AutoCor" srcPort="1" srcPortRate="8" dstActor="Printer" dstPort="0" dstPortRate="1"  />
+	</graphChannels>
+	
+	<schedule size="1">
+		<cluster id="0" size="3">
+			<processor id="0" size="256">
+				<actor instance="0" name="Source"/>
+				<actor instance="1" name="Source"/>
+				<actor instance="2" name="Source"/>
+				<actor instance="3" name="Source"/>
+				<actor instance="4" name="Source"/>
+				<actor instance="5" name="Source"/>
+				<actor instance="6" name="Source"/>
+				<actor instance="7" name="Source"/>
+				<actor instance="8" name="Source"/>
+				<actor instance="9" name="Source"/>
+				
+				<actor instance="10" name="Source"/>
+				<actor instance="11" name="Source"/>
+				<actor instance="12" name="Source"/>
+				<actor instance="13" name="Source"/>
+				<actor instance="14" name="Source"/>
+				<actor instance="15" name="Source"/>
+				<actor instance="16" name="Source"/>
+				<actor instance="17" name="Source"/>
+				<actor instance="18" name="Source"/>
+				<actor instance="19" name="Source"/>
+				
+				<actor instance="20" name="Source"/>
+				<actor instance="21" name="Source"/>
+				<actor instance="22" name="Source"/>
+				<actor instance="23" name="Source"/>
+				<actor instance="24" name="Source"/>
+				<actor instance="25" name="Source"/>
+				<actor instance="26" name="Source"/>
+				<actor instance="27" name="Source"/>
+				<actor instance="28" name="Source"/>
+				<actor instance="29" name="Source"/>
+
+				<actor instance="30" name="Source"/>
+				<actor instance="31" name="Source"/>
+				<actor instance="32" name="Source"/>
+				<actor instance="33" name="Source"/>
+				<actor instance="34" name="Source"/>
+				<actor instance="35" name="Source"/>
+				<actor instance="36" name="Source"/>
+				<actor instance="37" name="Source"/>
+				<actor instance="38" name="Source"/>
+				<actor instance="39" name="Source"/>
+	
+				<actor instance="40" name="Source"/>
+				<actor instance="41" name="Source"/>
+				<actor instance="42" name="Source"/>
+				<actor instance="43" name="Source"/>
+				<actor instance="44" name="Source"/>
+				<actor instance="45" name="Source"/>
+				<actor instance="46" name="Source"/>
+				<actor instance="47" name="Source"/>
+				<actor instance="48" name="Source"/>
+				<actor instance="49" name="Source"/>
+				
+				<actor instance="50" name="Source"/>
+				<actor instance="51" name="Source"/>
+				<actor instance="52" name="Source"/>
+				<actor instance="53" name="Source"/>
+				<actor instance="54" name="Source"/>
+				<actor instance="55" name="Source"/>
+				<actor instance="56" name="Source"/>
+				<actor instance="57" name="Source"/>
+				<actor instance="58" name="Source"/>
+				<actor instance="59" name="Source"/>
+
+				<actor instance="60" name="Source"/>
+				<actor instance="61" name="Source"/>
+				<actor instance="62" name="Source"/>
+				<actor instance="63" name="Source"/>
+				<actor instance="64" name="Source"/>
+				<actor instance="65" name="Source"/>
+				<actor instance="66" name="Source"/>
+				<actor instance="67" name="Source"/>
+				<actor instance="68" name="Source"/>
+				<actor instance="69" name="Source"/>
+				
+				<actor instance="70" name="Source"/>
+				<actor instance="71" name="Source"/>
+				<actor instance="72" name="Source"/>
+				<actor instance="73" name="Source"/>
+				<actor instance="74" name="Source"/>
+				<actor instance="75" name="Source"/>
+				<actor instance="76" name="Source"/>
+				<actor instance="77" name="Source"/>
+				<actor instance="78" name="Source"/>
+				<actor instance="79" name="Source"/>
+		
+				<actor instance="80" name="Source"/>
+				<actor instance="81" name="Source"/>
+				<actor instance="82" name="Source"/>
+				<actor instance="83" name="Source"/>
+				<actor instance="84" name="Source"/>
+				<actor instance="85" name="Source"/>
+				<actor instance="86" name="Source"/>
+				<actor instance="87" name="Source"/>
+				<actor instance="88" name="Source"/>
+				<actor instance="89" name="Source"/>
+				
+				<actor instance="90" name="Source"/>
+				<actor instance="91" name="Source"/>
+				<actor instance="92" name="Source"/>
+				<actor instance="93" name="Source"/>
+				<actor instance="94" name="Source"/>
+				<actor instance="95" name="Source"/>
+				<actor instance="96" name="Source"/>
+				<actor instance="97" name="Source"/>
+				<actor instance="98" name="Source"/>
+				<actor instance="99" name="Source"/>
+				
+				<actor instance="100" name="Source"/>
+				<actor instance="101" name="Source"/>
+				<actor instance="102" name="Source"/>
+				<actor instance="103" name="Source"/>
+				<actor instance="104" name="Source"/>
+				<actor instance="105" name="Source"/>
+				<actor instance="106" name="Source"/>
+				<actor instance="107" name="Source"/>
+				<actor instance="108" name="Source"/>
+				<actor instance="109" name="Source"/>
+				
+				<actor instance="110" name="Source"/>
+				<actor instance="111" name="Source"/>
+				<actor instance="112" name="Source"/>
+				<actor instance="113" name="Source"/>
+				<actor instance="114" name="Source"/>
+				<actor instance="115" name="Source"/>
+				<actor instance="116" name="Source"/>
+				<actor instance="117" name="Source"/>
+				<actor instance="118" name="Source"/>
+				<actor instance="119" name="Source"/>
+				
+				<actor instance="120" name="Source"/>
+				<actor instance="121" name="Source"/>
+				<actor instance="122" name="Source"/>
+				<actor instance="123" name="Source"/>
+				<actor instance="124" name="Source"/>
+				<actor instance="125" name="Source"/>
+				<actor instance="126" name="Source"/>
+				<actor instance="127" name="Source"/>
+				<actor instance="128" name="Source"/>
+				<actor instance="129" name="Source"/>
+
+				<actor instance="130" name="Source"/>
+				<actor instance="131" name="Source"/>
+				<actor instance="132" name="Source"/>
+				<actor instance="133" name="Source"/>
+				<actor instance="134" name="Source"/>
+				<actor instance="135" name="Source"/>
+				<actor instance="136" name="Source"/>
+				<actor instance="137" name="Source"/>
+				<actor instance="138" name="Source"/>
+				<actor instance="139" name="Source"/>
+	
+				<actor instance="140" name="Source"/>
+				<actor instance="141" name="Source"/>
+				<actor instance="142" name="Source"/>
+				<actor instance="143" name="Source"/>
+				<actor instance="144" name="Source"/>
+				<actor instance="145" name="Source"/>
+				<actor instance="146" name="Source"/>
+				<actor instance="147" name="Source"/>
+				<actor instance="148" name="Source"/>
+				<actor instance="149" name="Source"/>
+				
+				<actor instance="150" name="Source"/>
+				<actor instance="151" name="Source"/>
+				<actor instance="152" name="Source"/>
+				<actor instance="153" name="Source"/>
+				<actor instance="154" name="Source"/>
+				<actor instance="155" name="Source"/>
+				<actor instance="156" name="Source"/>
+				<actor instance="157" name="Source"/>
+				<actor instance="158" name="Source"/>
+				<actor instance="159" name="Source"/>
+
+				<actor instance="160" name="Source"/>
+				<actor instance="161" name="Source"/>
+				<actor instance="162" name="Source"/>
+				<actor instance="163" name="Source"/>
+				<actor instance="164" name="Source"/>
+				<actor instance="165" name="Source"/>
+				<actor instance="166" name="Source"/>
+				<actor instance="167" name="Source"/>
+				<actor instance="168" name="Source"/>
+				<actor instance="169" name="Source"/>
+				
+				<actor instance="170" name="Source"/>
+				<actor instance="171" name="Source"/>
+				<actor instance="172" name="Source"/>
+				<actor instance="173" name="Source"/>
+				<actor instance="174" name="Source"/>
+				<actor instance="175" name="Source"/>
+				<actor instance="176" name="Source"/>
+				<actor instance="177" name="Source"/>
+				<actor instance="178" name="Source"/>
+				<actor instance="179" name="Source"/>
+		
+				<actor instance="180" name="Source"/>
+				<actor instance="181" name="Source"/>
+				<actor instance="182" name="Source"/>
+				<actor instance="183" name="Source"/>
+				<actor instance="184" name="Source"/>
+				<actor instance="185" name="Source"/>
+				<actor instance="186" name="Source"/>
+				<actor instance="187" name="Source"/>
+				<actor instance="188" name="Source"/>
+				<actor instance="189" name="Source"/>
+				
+				<actor instance="190" name="Source"/>
+				<actor instance="191" name="Source"/>
+				<actor instance="192" name="Source"/>
+				<actor instance="193" name="Source"/>
+				<actor instance="194" name="Source"/>
+				<actor instance="195" name="Source"/>
+				<actor instance="196" name="Source"/>
+				<actor instance="197" name="Source"/>
+				<actor instance="198" name="Source"/>
+				<actor instance="199" name="Source"/>
+
+				<actor instance="200" name="Source"/>
+				<actor instance="201" name="Source"/>
+				<actor instance="202" name="Source"/>
+				<actor instance="203" name="Source"/>
+				<actor instance="204" name="Source"/>
+				<actor instance="205" name="Source"/>
+				<actor instance="206" name="Source"/>
+				<actor instance="207" name="Source"/>
+				<actor instance="208" name="Source"/>
+				<actor instance="209" name="Source"/>
+				
+				<actor instance="210" name="Source"/>
+				<actor instance="211" name="Source"/>
+				<actor instance="212" name="Source"/>
+				<actor instance="213" name="Source"/>
+				<actor instance="214" name="Source"/>
+				<actor instance="215" name="Source"/>
+				<actor instance="216" name="Source"/>
+				<actor instance="217" name="Source"/>
+				<actor instance="218" name="Source"/>
+				<actor instance="219" name="Source"/>
+				
+				<actor instance="220" name="Source"/>
+				<actor instance="221" name="Source"/>
+				<actor instance="222" name="Source"/>
+				<actor instance="223" name="Source"/>
+				<actor instance="224" name="Source"/>
+				<actor instance="225" name="Source"/>
+				<actor instance="226" name="Source"/>
+				<actor instance="227" name="Source"/>
+				<actor instance="228" name="Source"/>
+				<actor instance="229" name="Source"/>
+
+				<actor instance="230" name="Source"/>
+				<actor instance="231" name="Source"/>
+				<actor instance="232" name="Source"/>
+				<actor instance="233" name="Source"/>
+				<actor instance="234" name="Source"/>
+				<actor instance="235" name="Source"/>
+				<actor instance="236" name="Source"/>
+				<actor instance="237" name="Source"/>
+				<actor instance="238" name="Source"/>
+				<actor instance="239" name="Source"/>
+	
+				<actor instance="240" name="Source"/>
+				<actor instance="241" name="Source"/>
+				<actor instance="242" name="Source"/>
+				<actor instance="243" name="Source"/>
+				<actor instance="244" name="Source"/>
+				<actor instance="245" name="Source"/>
+				<actor instance="246" name="Source"/>
+				<actor instance="247" name="Source"/>
+				<actor instance="248" name="Source"/>
+				<actor instance="249" name="Source"/>
+				
+				<actor instance="250" name="Source"/>
+				<actor instance="251" name="Source"/>
+				<actor instance="252" name="Source"/>
+				<actor instance="253" name="Source"/>
+				<actor instance="254" name="Source"/>
+				<actor instance="255" name="Source"/>
+
+			</processor>
+			
+			<processor id="1" size="1">
+				<actor instance="0" name="AutoCor"/>
+			</processor>
+			
+			<processor id="2" size="8">
+				<actor instance="0" name="Printer"/>
+				<actor instance="1" name="Printer"/>
+				<actor instance="2" name="Printer"/>
+				<actor instance="3" name="Printer"/>
+
+				<actor instance="4" name="Printer"/>
+				<actor instance="5" name="Printer"/>
+				<actor instance="6" name="Printer"/>
+				<actor instance="7" name="Printer"/>
+			</processor>
+				
+		</cluster>
+	</schedule>
+	
+	<fifoallocation size="2">
+		<fifo name="src2cor"   fifoSize="256" srcCluster="0" dstCluster="0"/>
+		<fifo name="cor2print" fifoSize="8"   srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+	
+</mapping>

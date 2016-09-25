@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><mapping>
+    <graphActors size="3">
+        <actor function="VLD" instances="1" name="VLD" numPorts="1"/>
+        <actor function="IQ" instances="12" name="IQ" numPorts="2"/>
+        <actor function="COLOR" instances="12" name="COLOR" numPorts="1"/>
+    </graphActors>
+    <graphChannels size="2">
+        <channel channelSize="108" dstActor="IQ" dstPort="0" dstPortRate="3" name="VLD2IQ" srcActor="VLD" srcPort="0" srcPortRate="36" tokenSize="268"/>
+        <channel channelSize="108" dstActor="COLOR" dstPort="0" dstPortRate="3" name="IQ2COL" srcActor="IQ" srcPort="1" srcPortRate="3" tokenSize="76"/>
+    </graphChannels>
+    <preschedule size="1">
+        <cluster id="0" size="3">
+            <processor id="0" size="2">
+                <actor instance="0" name="VLD"/>
+                <actor instance="0" name="VLD"/>
+            </processor>
+            <processor id="1" size="7">
+                <actor instance="0" name="IQ"/>
+                <actor instance="1" name="IQ"/>
+                <actor instance="2" name="IQ"/>
+                <actor instance="3" name="IQ"/>
+                <actor instance="0" name="COLOR"/>
+                <actor instance="5" name="IQ"/>
+                <actor instance="6" name="IQ"/>
+            </processor>
+            <processor id="2" size="2">
+                <actor instance="4" name="IQ"/>
+                <actor instance="1" name="COLOR"/>
+            </processor>
+        </cluster>
+    </preschedule>
+    <schedule size="1">
+        <cluster id="0" size="4">
+            <processor id="0" size="1">
+                <actor instance="0" name="VLD"/>
+            </processor>
+            <processor id="1" size="11">
+                <actor instance="7" name="IQ"/>
+                <actor instance="8" name="IQ"/>
+                <actor instance="10" name="IQ"/>
+                <actor instance="3" name="COLOR"/>
+                <actor instance="0" name="IQ"/>
+                <actor instance="1" name="IQ"/>
+                <actor instance="2" name="IQ"/>
+                <actor instance="3" name="IQ"/>
+                <actor instance="0" name="COLOR"/>
+                <actor instance="5" name="IQ"/>
+                <actor instance="6" name="IQ"/>
+            </processor>
+            <processor id="2" size="11">
+                <actor instance="2" name="COLOR"/>
+                <actor instance="9" name="IQ"/>
+                <actor instance="11" name="IQ"/>
+                <actor instance="4" name="COLOR"/>
+                <actor instance="5" name="COLOR"/>
+                <actor instance="6" name="COLOR"/>
+                <actor instance="7" name="COLOR"/>
+                <actor instance="8" name="COLOR"/>
+                <actor instance="9" name="COLOR"/>
+                <actor instance="4" name="IQ"/>
+                <actor instance="1" name="COLOR"/>
+            </processor>
+            <processor id="3" size="2">
+                <actor instance="10" name="COLOR"/>
+                <actor instance="11" name="COLOR"/>
+            </processor>
+        </cluster>
+    </schedule>
+    <postschedule size="1">
+        <cluster id="0" size="3">
+            <processor id="1" size="15">
+                <actor instance="7" name="IQ"/>
+                <actor instance="8" name="IQ"/>
+                <actor instance="10" name="IQ"/>
+                <actor instance="3" name="COLOR"/>
+                <actor instance="0" name="IQ"/>
+                <actor instance="1" name="IQ"/>
+                <actor instance="2" name="IQ"/>
+                <actor instance="3" name="IQ"/>
+                <actor instance="0" name="COLOR"/>
+                <actor instance="5" name="IQ"/>
+                <actor instance="6" name="IQ"/>
+                <actor instance="7" name="IQ"/>
+                <actor instance="8" name="IQ"/>
+                <actor instance="10" name="IQ"/>
+                <actor instance="3" name="COLOR"/>
+            </processor>
+            <processor id="2" size="20">
+                <actor instance="2" name="COLOR"/>
+                <actor instance="9" name="IQ"/>
+                <actor instance="11" name="IQ"/>
+                <actor instance="4" name="COLOR"/>
+                <actor instance="5" name="COLOR"/>
+                <actor instance="6" name="COLOR"/>
+                <actor instance="7" name="COLOR"/>
+                <actor instance="8" name="COLOR"/>
+                <actor instance="9" name="COLOR"/>
+                <actor instance="4" name="IQ"/>
+                <actor instance="1" name="COLOR"/>
+                <actor instance="2" name="COLOR"/>
+                <actor instance="9" name="IQ"/>
+                <actor instance="11" name="IQ"/>
+                <actor instance="4" name="COLOR"/>
+                <actor instance="5" name="COLOR"/>
+                <actor instance="6" name="COLOR"/>
+                <actor instance="7" name="COLOR"/>
+                <actor instance="8" name="COLOR"/>
+                <actor instance="9" name="COLOR"/>
+            </processor>
+            <processor id="3" size="4">
+                <actor instance="10" name="COLOR"/>
+                <actor instance="11" name="COLOR"/>
+                <actor instance="10" name="COLOR"/>
+                <actor instance="11" name="COLOR"/>
+            </processor>
+        </cluster>
+    </postschedule>
+    <fifoallocation size="2">
+        <fifo dstCluster="0" fifoSize="108" name="VLD2IQ" srcCluster="0"/>
+        <fifo dstCluster="0" fifoSize="108" name="IQ2COL" srcCluster="0"/>
+    </fifoallocation>
+</mapping>

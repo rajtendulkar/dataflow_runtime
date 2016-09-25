@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+
+	<graphActors size="5">
+		<actor instances="1" name="Source" function="Source" numPorts="2"/>
+		<actor instances="1" name="CountSplit" function="CountSplit" numPorts="2"/>
+		<actor instances="16" name="Counter" function="Counter" numPorts="2"/>
+		<actor instances="1" name="RearrangeIndices" function="RearrangeIndices" numPorts="3"/>
+		<actor instances="1" name="Output" function="Output" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="5">
+		<channel name="ch0"	channelSize="16" tokenSize="4" srcActor="Source" srcPort="0" srcPortRate="16" dstActor="CountSplit"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch1"	channelSize="16" tokenSize="4" srcActor="Source" srcPort="1" srcPortRate="16" dstActor="RearrangeIndices"  dstPort="1" dstPortRate="16"/>
+		<channel name="ch2"	channelSize="256" tokenSize="4" srcActor="CountSplit" srcPort="1" srcPortRate="256"  dstActor="Counter"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch3"	channelSize="16" tokenSize="4" srcActor="Counter" srcPort="1" srcPortRate="1"  dstActor="RearrangeIndices"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch4"	channelSize="16" tokenSize="4" srcActor="RearrangeIndices" srcPort="2" srcPortRate="16"  dstActor="Output"  dstPort="0" dstPortRate="16"/>
+	</graphChannels>
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="20">
+				<actor instance="0" name="Source"/>
+				<actor instance="0" name="CountSplit"/>
+				<actor instance="0" name="Counter"/>
+				<actor instance="1" name="Counter"/>
+				<actor instance="2" name="Counter"/>
+				<actor instance="3" name="Counter"/>
+				<actor instance="4" name="Counter"/>
+				<actor instance="5" name="Counter"/>
+				<actor instance="6" name="Counter"/>
+				<actor instance="7" name="Counter"/>
+				<actor instance="8" name="Counter"/>
+				<actor instance="9" name="Counter"/>
+				<actor instance="10" name="Counter"/>
+				<actor instance="11" name="Counter"/>
+				<actor instance="12" name="Counter"/>
+				<actor instance="13" name="Counter"/>
+				<actor instance="14" name="Counter"/>
+				<actor instance="15" name="Counter"/>
+				<actor instance="0" name="RearrangeIndices"/>
+				<actor instance="0" name="Output"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="5">
+		<fifo name ="ch0" fifoSize="16" srcCluster="0" dstCluster="0" />
+		<fifo name ="ch1" fifoSize="16" srcCluster="0" dstCluster="0" />
+		<fifo name ="ch2" fifoSize="256" srcCluster="0" dstCluster="0" />
+		<fifo name ="ch3" fifoSize="16" srcCluster="0" dstCluster="0" />
+		<fifo name ="ch4" fifoSize="16" srcCluster="0" dstCluster="0" />
+	</fifoallocation>
+</mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3" numChannels="2">
+		<actor instances="1" name="Source" function="Source" numPorts="1"/>
+		<actor instances="1" name="BitonicPipe" function="BitonicPipe" numPorts="2"/>
+		<actor instances="1" name="Output" function="Output" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size = "2">
+		<channel name="SRC2SORT"	 channelSize="16" tokenSize="4" srcActor="Source" srcPort="0" srcPortRate="16" dstActor="BitonicPipe"  dstPort="0" dstPortRate="16"/>
+		<channel name="SORT2OUTPUT"	 channelSize="16" tokenSize="4" srcActor="BitonicPipe" srcPort="1" srcPortRate="16"  dstActor="Output"  dstPort="0" dstPortRate="16"/>
+	</graphChannels>
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="3">
+				<actor instance="0" name="Source"/>
+				<actor instance="0" name="BitonicPipe"/>
+				<actor instance="0" name="Output"/>			
+			</processor>
+
+		</cluster>
+	</schedule>
+	<fifoallocation size="2">
+		<fifo name="SRC2SORT" 	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="SORT2OUTPUT" fifoSize="16" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

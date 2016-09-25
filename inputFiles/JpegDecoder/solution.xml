@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><mapping>
+    <graphActors size="3">
+        <actor function="IQ" instances="12" name="IQ" numPorts="2"/>
+        <actor function="VLD" instances="1" name="VLD" numPorts="1"/>
+        <actor function="COLOR" instances="12" name="COLOR" numPorts="1"/>
+    </graphActors>
+    <graphChannels size="2">
+        <channel channelSize="36" dstActor="IQ" dstPort="0" dstPortRate="3" name="VLD2IQ" srcActor="VLD" srcPort="0" srcPortRate="36" tokenSize="268"/>
+        <channel channelSize="36" dstActor="COLOR" dstPort="0" dstPortRate="3" name="IQ2COL" srcActor="IQ" srcPort="1" srcPortRate="3" tokenSize="76"/>
+    </graphChannels>
+    <schedule size="3">
+        <cluster id="0" size="1">
+            <processor id="1" size="1">
+                <actor instance="0" name="VLD"/>
+            </processor>
+		</cluster>
+		<cluster id="1" size="12">
+            <processor id="0" size="1">
+                <actor instance="0" name="IQ"/>
+            </processor>
+            <processor id="1" size="1">
+                <actor instance="1" name="IQ"/>
+            </processor>
+            <processor id="2" size="1">
+                <actor instance="2" name="IQ"/>
+            </processor>
+            <processor id="3" size="1">
+                <actor instance="3" name="IQ"/>
+            </processor>
+            <processor id="4" size="1">
+                <actor instance="4" name="IQ"/>
+            </processor>
+            <processor id="5" size="1">
+                <actor instance="5" name="IQ"/>
+            </processor>
+            <processor id="6" size="1">
+                <actor instance="6" name="IQ"/>
+            </processor>
+            <processor id="7" size="1">
+                <actor instance="7" name="IQ"/>
+            </processor>
+            <processor id="8" size="1">
+                <actor instance="8" name="IQ"/>
+            </processor>
+            <processor id="9" size="1">
+                <actor instance="9" name="IQ"/>
+            </processor>
+            <processor id="10" size="1">
+                <actor instance="10" name="IQ"/>
+            </processor>
+            <processor id="11" size="1">
+                <actor instance="11" name="IQ"/>
+            </processor>
+        </cluster>
+        <cluster id="2" size="12">
+            <processor id="0" size="1">
+                <actor instance="0" name="COLOR"/>
+            </processor>
+            <processor id="1" size="1">
+                <actor instance="1" name="COLOR"/>
+            </processor>
+            <processor id="2" size="1">
+                <actor instance="2" name="COLOR"/>
+            </processor>
+            <processor id="3" size="1">
+                <actor instance="3" name="COLOR"/>
+            </processor>
+            <processor id="4" size="1">
+                <actor instance="4" name="COLOR"/>
+            </processor>
+            <processor id="5" size="1">
+                <actor instance="5" name="COLOR"/>
+            </processor>
+            <processor id="6" size="1">
+                <actor instance="6" name="COLOR"/>
+            </processor>
+            <processor id="7" size="1">
+                <actor instance="7" name="COLOR"/>
+            </processor>
+            <processor id="8" size="1">
+                <actor instance="8" name="COLOR"/>
+            </processor>
+            <processor id="9" size="1">
+                <actor instance="9" name="COLOR"/>
+            </processor>
+            <processor id="10" size="1">
+                <actor instance="10" name="COLOR"/>
+            </processor>
+            <processor id="11" size="1">
+                <actor instance="11" name="COLOR"/>
+            </processor>
+        </cluster>
+    </schedule>
+    <fifoallocation size="2">
+        <fifo dstCluster="1" dstMaxWriters="12" fifoSize="36" name="VLD2IQ" srcCluster="0" srcMaxWriters="1" />
+        <fifo dstCluster="2" dstMaxWriters="12" fifoSize="36" name="IQ2COL" srcCluster="1" srcMaxWriters="12" />
+    </fifoallocation>
+</mapping>

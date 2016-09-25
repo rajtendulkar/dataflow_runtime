@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="2">
+		<actor instances="1" name="producer" function="producer" numPorts="1"/>
+		<actor instances="1" name="consumer" function="consumer" numPorts="1"/>
+	</graphActors>
+	<graphChannels size="1">
+		<channel channelSize="4" dstActor="consumer" dstPort="0" dstPortRate="1" name="prod2cons" srcActor="producer" srcPort="0" srcPortRate="1" tokenSize="4"/>
+	</graphChannels>
+	<schedule size="1">
+		<cluster id = "0" size="2">
+			<processor id="0" size="1">
+				<actor instance="0" name="producer"/>
+			</processor>
+			<processor id="1" size="1">
+				<actor instance="0" name="consumer"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="1">
+		<fifo name="prod2cons" srcCluster="0" dstCluster="0" fifoSize="4"/>
+	</fifoallocation>
+</mapping>

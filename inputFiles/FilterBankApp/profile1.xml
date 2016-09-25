@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="29">
+		<actor instances="8" name="source" function="source" numPorts="1"/>
+		<actor instances="8" name="splitBranche" function="splitBranche" numPorts="9"/>
+			<actor instances="8" name="first-firFilter1" function="firFilter1-1" numPorts="2"/>
+			<actor instances="8" name="first-firFilter2" function="firFilter1-2" numPorts="2"/>
+			<actor instances="8" name="first-firFilter3" function="firFilter1-3" numPorts="2"/>
+			<actor instances="8" name="first-firFilter4" function="firFilter1-4" numPorts="2"/>
+			<actor instances="8" name="first-firFilter5" function="firFilter1-5" numPorts="2"/>
+			<actor instances="8" name="first-firFilter6" function="firFilter1-6" numPorts="2"/>
+			<actor instances="8" name="first-firFilter7" function="firFilter1-7" numPorts="2"/>
+			<actor instances="8" name="first-firFilter8" function="firFilter1-8" numPorts="2"/>
+
+			<actor instances="1" name="samp1" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp2" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp3" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp4" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp5" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp6" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp7" function="samp" numPorts="2"/>
+			<actor instances="1" name="samp8" function="samp" numPorts="2"/>
+
+			<actor instances="8" name="last-firFilter1" function="firFilter2-1" numPorts="2"/>
+			<actor instances="8" name="last-firFilter2" function="firFilter2-2" numPorts="2"/>
+			<actor instances="8" name="last-firFilter3" function="firFilter2-3" numPorts="2"/>
+			<actor instances="8" name="last-firFilter4" function="firFilter2-4" numPorts="2"/>
+			<actor instances="8" name="last-firFilter5" function="firFilter2-5" numPorts="2"/>
+			<actor instances="8" name="last-firFilter6" function="firFilter2-6" numPorts="2"/>
+			<actor instances="8" name="last-firFilter7" function="firFilter2-7" numPorts="2"/>
+			<actor instances="8" name="last-firFilter8" function="firFilter2-8" numPorts="2"/>
+			
+		<actor instances="8" name="joinBranche" function="joinBranche" numPorts="9"/>
+		<actor instances="8" name="combine" function="combine" numPorts="2"/>
+		<actor instances="8" name="sink" function="sink" numPorts="1"/>
+		
+	</graphActors>
+	<graphChannels size="35">
+		<channel srcActor="source" srcPort="0"  srcPortRate="1" name="src2split" dstActor="splitBranche" dstPort="0"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="splitBranche" srcPort="1"  srcPortRate="1" name="split2fir-1" dstActor="first-firFilter1" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="2"  srcPortRate="1" name="split2fir-2" dstActor="first-firFilter2" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="3"  srcPortRate="1" name="split2fir-3" dstActor="first-firFilter3" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="4"  srcPortRate="1" name="split2fir-4" dstActor="first-firFilter4" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="5"  srcPortRate="1" name="split2fir-5" dstActor="first-firFilter5" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="6"  srcPortRate="1" name="split2fir-6" dstActor="first-firFilter6" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="7"  srcPortRate="1" name="split2fir-7" dstActor="first-firFilter7" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="splitBranche" srcPort="8"  srcPortRate="1" name="split2fir-8" dstActor="first-firFilter8" dstPort="0"  dstPortRate="1" channelSize="32" tokenSize="4" initialTokens="31" peekRate="32"/>
+
+			<channel srcActor="first-firFilter1" srcPort="1"  srcPortRate="1" name="fir2samp-1" dstActor="samp1" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter2" srcPort="1"  srcPortRate="1" name="fir2samp-2" dstActor="samp2" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter3" srcPort="1"  srcPortRate="1" name="fir2samp-3" dstActor="samp3" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter4" srcPort="1"  srcPortRate="1" name="fir2samp-4" dstActor="samp4" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter5" srcPort="1"  srcPortRate="1" name="fir2samp-5" dstActor="samp5" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter6" srcPort="1"  srcPortRate="1" name="fir2samp-6" dstActor="samp6" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter7" srcPort="1"  srcPortRate="1" name="fir2samp-7" dstActor="samp7" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+			<channel srcActor="first-firFilter8" srcPort="1"  srcPortRate="1" name="fir2samp-8" dstActor="samp8" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+
+			<channel srcActor="samp1" srcPort="1"  srcPortRate="8" name="samp2fir-1" dstActor="last-firFilter1" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp2" srcPort="1"  srcPortRate="8" name="samp2fir-2" dstActor="last-firFilter2" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp3" srcPort="1"  srcPortRate="8" name="samp2fir-3" dstActor="last-firFilter3" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp4" srcPort="1"  srcPortRate="8" name="samp2fir-4" dstActor="last-firFilter4" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp5" srcPort="1"  srcPortRate="8" name="samp2fir-5" dstActor="last-firFilter5" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp6" srcPort="1"  srcPortRate="8" name="samp2fir-6" dstActor="last-firFilter6" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp7" srcPort="1"  srcPortRate="8" name="samp2fir-7" dstActor="last-firFilter7" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+			<channel srcActor="samp8" srcPort="1"  srcPortRate="8" name="samp2fir-8" dstActor="last-firFilter8" dstPort="0"  dstPortRate="1" channelSize="39" tokenSize="4" initialTokens="31" peekRate="32"/>
+
+			<channel srcActor="last-firFilter1" srcPort="1"  srcPortRate="1" name="fir2join-1" dstActor="joinBranche" dstPort="1"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter2" srcPort="1"  srcPortRate="1" name="fir2join-2" dstActor="joinBranche" dstPort="2"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter3" srcPort="1"  srcPortRate="1" name="fir2join-3" dstActor="joinBranche" dstPort="3"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter4" srcPort="1"  srcPortRate="1" name="fir2join-4" dstActor="joinBranche" dstPort="4"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter5" srcPort="1"  srcPortRate="1" name="fir2join-5" dstActor="joinBranche" dstPort="5"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter6" srcPort="1"  srcPortRate="1" name="fir2join-6" dstActor="joinBranche" dstPort="6"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter7" srcPort="1"  srcPortRate="1" name="fir2join-7" dstActor="joinBranche" dstPort="7"  dstPortRate="1" channelSize="1" tokenSize="4" />
+			<channel srcActor="last-firFilter8" srcPort="1"  srcPortRate="1" name="fir2join-8" dstActor="joinBranche" dstPort="8"  dstPortRate="1" channelSize="1" tokenSize="4" />
+
+		<channel srcActor="joinBranche" srcPort="0"  srcPortRate="8" name="join2comb" dstActor="combine" dstPort="0"  dstPortRate="8" channelSize="8" tokenSize="4" />
+		<channel srcActor="combine" srcPort="1"  srcPortRate="1" name="comb2sink" dstActor="sink" dstPort="0"  dstPortRate="1" channelSize="1" tokenSize="4" />
+	</graphChannels>
+	
+	<schedule size="1">
+		<cluster id = "0" size="10">
+			<processor id="0" size="16">
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="splitBranche"/>
+				<actor instance="1" name="source"/>
+				<actor instance="1" name="splitBranche"/>
+				<actor instance="2" name="source"/>
+				<actor instance="2" name="splitBranche"/>
+				<actor instance="3" name="source"/>
+				<actor instance="3" name="splitBranche"/>
+				<actor instance="4" name="source"/>
+				<actor instance="4" name="splitBranche"/>
+				<actor instance="5" name="source"/>
+				<actor instance="5" name="splitBranche"/>
+				<actor instance="6" name="source"/>
+				<actor instance="6" name="splitBranche"/>
+				<actor instance="7" name="source"/>
+				<actor instance="7" name="splitBranche"/>
+			</processor>
+			
+			<processor id="1" size="17">
+				<actor instance="0" name="first-firFilter1"/>
+				<actor instance="1" name="first-firFilter1"/>
+				<actor instance="2" name="first-firFilter1"/>
+				<actor instance="3" name="first-firFilter1"/>
+				<actor instance="4" name="first-firFilter1"/>
+				<actor instance="5" name="first-firFilter1"/>
+				<actor instance="6" name="first-firFilter1"/>
+				<actor instance="7" name="first-firFilter1"/>
+
+				<actor instance="0" name="samp1"/>
+				
+				<actor instance="0" name="last-firFilter1"/>
+				<actor instance="1" name="last-firFilter1"/>
+				<actor instance="2" name="last-firFilter1"/>
+				<actor instance="3" name="last-firFilter1"/>
+				<actor instance="4" name="last-firFilter1"/>
+				<actor instance="5" name="last-firFilter1"/>
+				<actor instance="6" name="last-firFilter1"/>
+				<actor instance="7" name="last-firFilter1"/>
+			</processor>
+			<processor id="2" size="17">
+				<actor instance="0" name="first-firFilter2"/>
+				<actor instance="1" name="first-firFilter2"/>
+				<actor instance="2" name="first-firFilter2"/>
+				<actor instance="3" name="first-firFilter2"/>
+				<actor instance="4" name="first-firFilter2"/>
+				<actor instance="5" name="first-firFilter2"/>
+				<actor instance="6" name="first-firFilter2"/>
+				<actor instance="7" name="first-firFilter2"/>
+				
+				<actor instance="0" name="samp2"/>
+				
+				<actor instance="0" name="last-firFilter2"/>
+				<actor instance="1" name="last-firFilter2"/>
+				<actor instance="2" name="last-firFilter2"/>
+				<actor instance="3" name="last-firFilter2"/>
+				<actor instance="4" name="last-firFilter2"/>
+				<actor instance="5" name="last-firFilter2"/>
+				<actor instance="6" name="last-firFilter2"/>
+				<actor instance="7" name="last-firFilter2"/>
+			</processor>
+			<processor id="3" size="17">
+				<actor instance="0" name="first-firFilter3"/>
+				<actor instance="1" name="first-firFilter3"/>
+				<actor instance="2" name="first-firFilter3"/>
+				<actor instance="3" name="first-firFilter3"/>
+				<actor instance="4" name="first-firFilter3"/>
+				<actor instance="5" name="first-firFilter3"/>
+				<actor instance="6" name="first-firFilter3"/>
+				<actor instance="7" name="first-firFilter3"/>
+				
+				<actor instance="0" name="samp3"/>
+				
+				<actor instance="0" name="last-firFilter3"/>
+				<actor instance="1" name="last-firFilter3"/>
+				<actor instance="2" name="last-firFilter3"/>
+				<actor instance="3" name="last-firFilter3"/>
+				<actor instance="4" name="last-firFilter3"/>
+				<actor instance="5" name="last-firFilter3"/>
+				<actor instance="6" name="last-firFilter3"/>
+				<actor instance="7" name="last-firFilter3"/>
+			</processor>
+			<processor id="4" size="17">
+				<actor instance="0" name="first-firFilter4"/>
+				<actor instance="1" name="first-firFilter4"/>
+				<actor instance="2" name="first-firFilter4"/>
+				<actor instance="3" name="first-firFilter4"/>
+				<actor instance="4" name="first-firFilter4"/>
+				<actor instance="5" name="first-firFilter4"/>
+				<actor instance="6" name="first-firFilter4"/>
+				<actor instance="7" name="first-firFilter4"/>
+				
+				<actor instance="0" name="samp4"/>
+				
+				<actor instance="0" name="last-firFilter4"/>
+				<actor instance="1" name="last-firFilter4"/>
+				<actor instance="2" name="last-firFilter4"/>
+				<actor instance="3" name="last-firFilter4"/>
+				<actor instance="4" name="last-firFilter4"/>
+				<actor instance="5" name="last-firFilter4"/>
+				<actor instance="6" name="last-firFilter4"/>
+				<actor instance="7" name="last-firFilter4"/>
+			</processor>
+			
+			<processor id="5" size="17">
+				<actor instance="0" name="first-firFilter5"/>
+				<actor instance="1" name="first-firFilter5"/>
+				<actor instance="2" name="first-firFilter5"/>
+				<actor instance="3" name="first-firFilter5"/>
+				<actor instance="4" name="first-firFilter5"/>
+				<actor instance="5" name="first-firFilter5"/>
+				<actor instance="6" name="first-firFilter5"/>
+				<actor instance="7" name="first-firFilter5"/>
+				
+				<actor instance="0" name="samp5"/>
+				
+				<actor instance="0" name="last-firFilter5"/>
+				<actor instance="1" name="last-firFilter5"/>
+				<actor instance="2" name="last-firFilter5"/>
+				<actor instance="3" name="last-firFilter5"/>
+				<actor instance="4" name="last-firFilter5"/>
+				<actor instance="5" name="last-firFilter5"/>
+				<actor instance="6" name="last-firFilter5"/>
+				<actor instance="7" name="last-firFilter5"/>
+			</processor>
+			<processor id="6" size="17">
+				<actor instance="0" name="first-firFilter6"/>
+				<actor instance="1" name="first-firFilter6"/>
+				<actor instance="2" name="first-firFilter6"/>
+				<actor instance="3" name="first-firFilter6"/>
+				<actor instance="4" name="first-firFilter6"/>
+				<actor instance="5" name="first-firFilter6"/>
+				<actor instance="6" name="first-firFilter6"/>
+				<actor instance="7" name="first-firFilter6"/>
+				
+				<actor instance="0" name="samp6"/>
+				
+				<actor instance="0" name="last-firFilter6"/>
+				<actor instance="1" name="last-firFilter6"/>
+				<actor instance="2" name="last-firFilter6"/>
+				<actor instance="3" name="last-firFilter6"/>
+				<actor instance="4" name="last-firFilter6"/>
+				<actor instance="5" name="last-firFilter6"/>
+				<actor instance="6" name="last-firFilter6"/>
+				<actor instance="7" name="last-firFilter6"/>
+			</processor>
+			<processor id="7" size="17">
+				<actor instance="0" name="first-firFilter7"/>
+				<actor instance="1" name="first-firFilter7"/>
+				<actor instance="2" name="first-firFilter7"/>
+				<actor instance="3" name="first-firFilter7"/>
+				<actor instance="4" name="first-firFilter7"/>
+				<actor instance="5" name="first-firFilter7"/>
+				<actor instance="6" name="first-firFilter7"/>
+				<actor instance="7" name="first-firFilter7"/>
+				
+				<actor instance="0" name="samp7"/>
+				
+				<actor instance="0" name="last-firFilter7"/>
+				<actor instance="1" name="last-firFilter7"/>
+				<actor instance="2" name="last-firFilter7"/>
+				<actor instance="3" name="last-firFilter7"/>
+				<actor instance="4" name="last-firFilter7"/>
+				<actor instance="5" name="last-firFilter7"/>
+				<actor instance="6" name="last-firFilter7"/>
+				<actor instance="7" name="last-firFilter7"/>
+			</processor>
+			<processor id="8" size="17">
+				<actor instance="0" name="first-firFilter8"/>
+				<actor instance="1" name="first-firFilter8"/>
+				<actor instance="2" name="first-firFilter8"/>
+				<actor instance="3" name="first-firFilter8"/>
+				<actor instance="4" name="first-firFilter8"/>
+				<actor instance="5" name="first-firFilter8"/>
+				<actor instance="6" name="first-firFilter8"/>
+				<actor instance="7" name="first-firFilter8"/>
+				
+				<actor instance="0" name="samp8"/>
+				
+				<actor instance="0" name="last-firFilter8"/>
+				<actor instance="1" name="last-firFilter8"/>
+				<actor instance="2" name="last-firFilter8"/>
+				<actor instance="3" name="last-firFilter8"/>
+				<actor instance="4" name="last-firFilter8"/>
+				<actor instance="5" name="last-firFilter8"/>
+				<actor instance="6" name="last-firFilter8"/>
+				<actor instance="7" name="last-firFilter8"/>
+			</processor>
+
+			
+			<processor id="9" size="24">
+				<actor instance="0" name="joinBranche"/>
+				<actor instance="0" name="combine"/>
+				<actor instance="0" name="sink"/>
+				<actor instance="1" name="joinBranche"/>
+				<actor instance="1" name="combine"/>
+				<actor instance="1" name="sink"/>
+				<actor instance="2" name="joinBranche"/>
+				<actor instance="2" name="combine"/>
+				<actor instance="2" name="sink"/>
+				<actor instance="3" name="joinBranche"/>
+				<actor instance="3" name="combine"/>
+				<actor instance="3" name="sink"/>
+				
+				<actor instance="4" name="joinBranche"/>
+				<actor instance="4" name="combine"/>
+				<actor instance="4" name="sink"/>
+				<actor instance="5" name="joinBranche"/>
+				<actor instance="5" name="combine"/>
+				<actor instance="5" name="sink"/>
+				<actor instance="6" name="joinBranche"/>
+				<actor instance="6" name="combine"/>
+				<actor instance="6" name="sink"/>
+				<actor instance="7" name="joinBranche"/>
+				<actor instance="7" name="combine"/>
+				<actor instance="7" name="sink"/>
+
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="35">
+	
+	<fifo name="src2split" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="split2fir-1" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-2" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-3" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-4" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-5" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-6" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-7" srcCluster="0" dstCluster="0" fifoSize="32" />
+			<fifo name="split2fir-8" srcCluster="0" dstCluster="0" fifoSize="32" />
+
+			<fifo name="fir2samp-1" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-2" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-3" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-4" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-5" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-6" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-7" srcCluster="0" dstCluster="0" fifoSize="8" />
+			<fifo name="fir2samp-8" srcCluster="0" dstCluster="0" fifoSize="8" />
+
+			<fifo name="samp2fir-1" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-2" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-3" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-4" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-5" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-6" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-7" srcCluster="0" dstCluster="0" fifoSize="39" />
+			<fifo name="samp2fir-8" srcCluster="0" dstCluster="0" fifoSize="39" />
+
+			<fifo name="fir2join-1" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-2" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-3" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-4" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-5" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-6" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-7" srcCluster="0" dstCluster="0" fifoSize="1" />
+			<fifo name="fir2join-8" srcCluster="0" dstCluster="0" fifoSize="1" />
+
+		<fifo name="join2comb" srcCluster="0" dstCluster="0" fifoSize="8" />
+		<fifo name="comb2sink" srcCluster="0" dstCluster="0" fifoSize="1" />
+	</fifoallocation>
+</mapping>

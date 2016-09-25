@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="12"> 
+		<actor instances="1" name="Source" function="Source" numPorts="1"/>
+		<actor instances="1" name="Split16" function="Split0" numPorts="2"/>
+		<actor instances="2" name="Split8" function="Split1" numPorts="2"/>
+		<actor instances="4" name="Split4" function="Split2" numPorts="2"/>
+		<actor instances="8" name="Merger2" function="Merger0" numPorts="2"/>
+		<actor instances="4" name="Join4" function="Join0" numPorts="2"/>
+		<actor instances="4" name="Merger4" function="Merger1" numPorts="2"/>
+		<actor instances="2" name="Join8" function="Join1" numPorts="2"/>
+		<actor instances="2" name="Merger8" function="Merger2" numPorts="2"/>
+		<actor instances="1" name="Join16" function="Join2" numPorts="2"/>
+		<actor instances="1" name="Merger16" function="Merger3" numPorts="2"/>
+		<actor instances="1" name="Output" function="Output" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="11">
+		<channel name="ch0"	 	 channelSize="16" tokenSize="4" srcActor="Source" srcPort="0" srcPortRate="16" dstActor="Split16"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch1"	 channelSize="16" tokenSize="4" srcActor="Split16" srcPort="1" srcPortRate="16"  dstActor="Split8"  dstPort="0" dstPortRate="8"/>
+		<channel name="ch2"	 channelSize="16" tokenSize="4" srcActor="Split8" srcPort="1" srcPortRate="8"  dstActor="Split4"  dstPort="0" dstPortRate="4"/>
+		<channel name="ch3"	 channelSize="16" tokenSize="4" srcActor="Split4" srcPort="1" srcPortRate="4"  dstActor="Merger2"  dstPort="0" dstPortRate="2"/>
+		<channel name="ch4"	 channelSize="16" tokenSize="4" srcActor="Merger2" srcPort="1" srcPortRate="2"  dstActor="Join4"  dstPort="0" dstPortRate="4"/>
+		<channel name="ch5"	 channelSize="16" tokenSize="4" srcActor="Join4" srcPort="1" srcPortRate="4"  dstActor="Merger4"  dstPort="0" dstPortRate="4"/>
+		<channel name="ch6"	 channelSize="16" tokenSize="4" srcActor="Merger4" srcPort="1" srcPortRate="4"  dstActor="Join8"  dstPort="0" dstPortRate="8"/>
+		<channel name="ch7"	 channelSize="16" tokenSize="4" srcActor="Join8" srcPort="1" srcPortRate="8"  dstActor="Merger8"  dstPort="0" dstPortRate="8"/>
+		<channel name="ch8"	 channelSize="16" tokenSize="4" srcActor="Merger8" srcPort="1" srcPortRate="8"  dstActor="Join16"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch9"	 channelSize="16" tokenSize="4" srcActor="Join16" srcPort="1" srcPortRate="16"  dstActor="Merger16"  dstPort="0" dstPortRate="16"/>
+		<channel name="ch10"  channelSize="16" tokenSize="4" srcActor="Merger16" srcPort="1" srcPortRate="16"  dstActor="Output"  dstPort="0" dstPortRate="16"/>
+	</graphChannels>
+
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="31">
+				<actor instance="0" name="Source"/>
+				<actor instance="0" name="Split16"/>
+				<actor instance="0" name="Split8"/>
+				<actor instance="1" name="Split8"/>
+				<actor instance="0" name="Split4"/>
+				<actor instance="1" name="Split4"/>
+				<actor instance="2" name="Split4"/>
+				<actor instance="3" name="Split4"/>
+				<actor instance="0" name="Merger2"/>
+				<actor instance="1" name="Merger2"/>
+				<actor instance="2" name="Merger2"/>
+				<actor instance="3" name="Merger2"/>
+				<actor instance="4" name="Merger2"/>
+				<actor instance="5" name="Merger2"/>
+				<actor instance="6" name="Merger2"/>
+				<actor instance="7" name="Merger2"/>
+				<actor instance="0" name="Join4"/>
+				<actor instance="1" name="Join4"/>
+				<actor instance="2" name="Join4"/>
+				<actor instance="3" name="Join4"/>
+				<actor instance="0" name="Merger4"/>
+				<actor instance="1" name="Merger4"/>
+				<actor instance="2" name="Merger4"/>
+				<actor instance="3" name="Merger4"/>
+				<actor instance="0" name="Join8"/>
+				<actor instance="1" name="Join8"/>
+				<actor instance="0" name="Merger8"/>
+				<actor instance="1" name="Merger8"/>
+				<actor instance="0" name="Join16"/>
+				<actor instance="0" name="Merger16"/>
+				<actor instance="0" name="Output"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="11">
+		<fifo name="ch0" 	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch1"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch2"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch3"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch4"	 fifoSize="16" srcCluster="0" dstCluster="0"/> 
+		<fifo name="ch5"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch6"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch7"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch8"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch9"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="ch10" 	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

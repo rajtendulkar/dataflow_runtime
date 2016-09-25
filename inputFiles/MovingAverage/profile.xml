@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3">
+		<actor instances="1" name="source"   function="source"   numPorts="1"/>
+		<actor instances="1"  name="averager" function="averager" numPorts="2"/>
+		<actor instances="1"  name="printer"  function="printer"  numPorts="1"/>
+	</graphActors>
+	<graphChannels size="2">
+		<channel channelSize="10" dstActor="averager" dstPort="0" dstPortRate="1" peekRate="10" name="src2avg" srcActor="source" srcPort="0" srcPortRate="1" tokenSize="4"/>
+		<channel channelSize="1"  dstActor="printer"  dstPort="0" dstPortRate="1" name="avg2print" srcActor="averager" srcPort="1" srcPortRate="1" tokenSize="4"/>
+	</graphChannels>
+
+	<preschedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="9">
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="source"/>
+			</processor>
+		</cluster>
+	</preschedule>
+	
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="3">
+				<actor instance="0" name="source"/>
+				<actor instance="0" name="averager"/>
+				<actor instance="0" name="printer"/>
+			</processor>
+		</cluster>
+	</schedule>
+	
+	<fifoallocation size="2">
+		<fifo name="src2avg"   srcCluster="0" dstCluster="0" fifoSize="10"/>
+		<fifo name="avg2print" srcCluster="0" dstCluster="0" fifoSize="1"/>
+	</fifoallocation>
+</mapping>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="11"> 
+		<actor instances="1" name="MatrixSource" function="MatrixSource" numPorts="2"/>
+		<actor instances="3" name="BlockSplit0" function="BlockSplit0" numPorts="2"/>
+		<actor instances="3" name="Duplicate0" function="Duplicate0" numPorts="2"/>
+		<actor instances="1" name="Transpose" function="Transpose" numPorts="2"/>
+		<actor instances="3" name="BlockSplit1" function="BlockSplit1" numPorts="2"/>
+		<actor instances="1" name="Duplicate1" function="Duplicate1" numPorts="2"/>
+		<actor instances="27" name="MatrixJoiner" function="MatrixJoiner" numPorts="3"/>
+		<actor instances="27" name="BlockMultiply" function="BlockMultiply" numPorts="2"/>
+		<actor instances="9" name="BlockAdd" function="BlockAdd" numPorts="2"/>
+		<actor instances="3" name="BlockSplit2" function="BlockSplit2" numPorts="2"/>
+		<actor instances="1" name="MatrixPrintOutput" function="MatrixPrintOutput" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="11">
+		<channel name="SRC2SPLIT0" 		 channelSize="144" tokenSize="4" srcActor="MatrixSource" srcPort="0" srcPortRate="144" dstActor="BlockSplit0"      dstPort="0" dstPortRate="48"/>
+		<channel name="SPLIT02DUP0" 	 channelSize="144" tokenSize="4" srcActor="BlockSplit0"  srcPort="1" srcPortRate="48"  dstActor="Duplicate0"   	   dstPort="0" dstPortRate="48"/>
+		<channel name="DUP02JOINER" 	 channelSize="432" tokenSize="4" srcActor="Duplicate0"   srcPort="1" srcPortRate="144" dstActor="MatrixJoiner"     dstPort="0" dstPortRate="16"/>
+		<channel name="SRC2TRANSPOSE" 	 channelSize="108" tokenSize="4" srcActor="MatrixSource" srcPort="1" srcPortRate="108" dstActor="Transpose"        dstPort="0" dstPortRate="108"/>
+		<channel name="TRANSPOSE2SPLIT1" channelSize="108" tokenSize="4" srcActor="Transpose" 	 srcPort="1" srcPortRate="108" dstActor="BlockSplit1"  	   dstPort="0" dstPortRate="36"/>
+		<channel name="SPLIT12DUP1" 	 channelSize="108" tokenSize="4" srcActor="BlockSplit1"  srcPort="1" srcPortRate="36"  dstActor="Duplicate1"       dstPort="0" dstPortRate="108"/>
+		<channel name="DUP12JOINER" 	 channelSize="324" tokenSize="4" srcActor="Duplicate1"   srcPort="1" srcPortRate="324" dstActor="MatrixJoiner" 	   dstPort="1" dstPortRate="12"/>
+		<channel name="JOINER2BLOCKMULT" channelSize="756" tokenSize="4" srcActor="MatrixJoiner"  srcPort="2" srcPortRate="28" dstActor="BlockMultiply"   dstPort="0" dstPortRate="28"/>
+		<channel name="MULT2ADD" 		 channelSize="324" tokenSize="4" srcActor="BlockMultiply" srcPort="1" srcPortRate="12" dstActor="BlockAdd" 	   dstPort="0" dstPortRate="36"/>
+		<channel name="ADD2SPLIT2" 		 channelSize="108" tokenSize="4" srcActor="BlockAdd" 	  srcPort="1" srcPortRate="12" dstActor="BlockSplit2"   	dstPort="0" dstPortRate="36"/>
+		<channel name="SPLIT22OUTPUT" 	 channelSize="108" tokenSize="4" srcActor="BlockSplit2"   srcPort="1" srcPortRate="36" dstActor="MatrixPrintOutput" dstPort="0" dstPortRate="108"/>
+	</graphChannels>
+
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="79">
+				<actor instance="0" name="MatrixSource"/>
+				<actor instance="0" name="BlockSplit0"/>
+				<actor instance="1" name="BlockSplit0"/>
+				<actor instance="2" name="BlockSplit0"/>
+				<actor instance="0" name="Duplicate0"/>
+				<actor instance="1" name="Duplicate0"/>
+				<actor instance="2" name="Duplicate0"/>
+				<actor instance="0" name="Transpose"/>
+				<actor instance="0" name="BlockSplit1"/>
+				<actor instance="1" name="BlockSplit1"/>
+				<actor instance="2" name="BlockSplit1"/>
+				<actor instance="0" name="Duplicate1"/>
+				<actor instance="0" name="MatrixJoiner"/>
+				<actor instance="1" name="MatrixJoiner"/>
+				<actor instance="2" name="MatrixJoiner"/>
+				<actor instance="3" name="MatrixJoiner"/>
+				<actor instance="4" name="MatrixJoiner"/>
+				<actor instance="5" name="MatrixJoiner"/>
+				<actor instance="6" name="MatrixJoiner"/>
+				<actor instance="7" name="MatrixJoiner"/>
+				<actor instance="8" name="MatrixJoiner"/>
+				<actor instance="9" name="MatrixJoiner"/>
+				<actor instance="10" name="MatrixJoiner"/>
+				<actor instance="11" name="MatrixJoiner"/>
+				<actor instance="12" name="MatrixJoiner"/>
+				<actor instance="13" name="MatrixJoiner"/>
+				<actor instance="14" name="MatrixJoiner"/>
+				<actor instance="15" name="MatrixJoiner"/>
+				<actor instance="16" name="MatrixJoiner"/>
+				<actor instance="17" name="MatrixJoiner"/>
+				<actor instance="18" name="MatrixJoiner"/>
+				<actor instance="19" name="MatrixJoiner"/>
+				<actor instance="20" name="MatrixJoiner"/>
+				<actor instance="21" name="MatrixJoiner"/>
+				<actor instance="22" name="MatrixJoiner"/>
+				<actor instance="23" name="MatrixJoiner"/>
+				<actor instance="24" name="MatrixJoiner"/>
+				<actor instance="25" name="MatrixJoiner"/>
+				<actor instance="26" name="MatrixJoiner"/>
+				<actor instance="0" name="BlockMultiply"/>
+				<actor instance="1" name="BlockMultiply"/>
+				<actor instance="2" name="BlockMultiply"/>
+				<actor instance="3" name="BlockMultiply"/>
+				<actor instance="4" name="BlockMultiply"/>
+				<actor instance="5" name="BlockMultiply"/>
+				<actor instance="6" name="BlockMultiply"/>
+				<actor instance="7" name="BlockMultiply"/>
+				<actor instance="8" name="BlockMultiply"/>
+				<actor instance="9" name="BlockMultiply"/>
+				<actor instance="10" name="BlockMultiply"/>
+				<actor instance="11" name="BlockMultiply"/>
+				<actor instance="12" name="BlockMultiply"/>
+				<actor instance="13" name="BlockMultiply"/>
+				<actor instance="14" name="BlockMultiply"/>
+				<actor instance="15" name="BlockMultiply"/>
+				<actor instance="16" name="BlockMultiply"/>
+				<actor instance="17" name="BlockMultiply"/>
+				<actor instance="18" name="BlockMultiply"/>
+				<actor instance="19" name="BlockMultiply"/>
+				<actor instance="20" name="BlockMultiply"/>
+				<actor instance="21" name="BlockMultiply"/>
+				<actor instance="22" name="BlockMultiply"/>
+				<actor instance="23" name="BlockMultiply"/>
+				<actor instance="24" name="BlockMultiply"/>
+				<actor instance="25" name="BlockMultiply"/>
+				<actor instance="26" name="BlockMultiply"/>
+				<actor instance="0" name="BlockAdd"/>
+				<actor instance="1" name="BlockAdd"/>
+				<actor instance="2" name="BlockAdd"/>
+				<actor instance="3" name="BlockAdd"/>
+				<actor instance="4" name="BlockAdd"/>
+				<actor instance="5" name="BlockAdd"/>
+				<actor instance="6" name="BlockAdd"/>
+				<actor instance="7" name="BlockAdd"/>
+				<actor instance="8" name="BlockAdd"/>
+				<actor instance="0" name="BlockSplit2"/>
+				<actor instance="1" name="BlockSplit2"/>
+				<actor instance="2" name="BlockSplit2"/>
+				<actor instance="0" name="MatrixPrintOutput"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="11">
+		<fifo name="SRC2SPLIT0" 	 	fifoSize="144" srcCluster="0" dstCluster="0"/>
+		<fifo name="SPLIT02DUP0" 	 	fifoSize="144" srcCluster="0" dstCluster="0"/>
+		<fifo name="DUP02JOINER" 	 	fifoSize="432" srcCluster="0" dstCluster="0"/>
+		<fifo name="SRC2TRANSPOSE" 	 	fifoSize="108" srcCluster="0" dstCluster="0"/>
+		<fifo name="TRANSPOSE2SPLIT1"	fifoSize="108" srcCluster="0" dstCluster="0"/>
+		<fifo name="SPLIT12DUP1" 	 	fifoSize="108" srcCluster="0" dstCluster="0"/>
+		<fifo name="DUP12JOINER" 	 	fifoSize="324" srcCluster="0" dstCluster="0"/> 
+		<fifo name="JOINER2BLOCKMULT" 	fifoSize="756" srcCluster="0" dstCluster="0"/>
+		<fifo name="MULT2ADD" 		 	fifoSize="324" srcCluster="0" dstCluster="0"/>
+		<fifo name="ADD2SPLIT2" 		fifoSize="108" srcCluster="0" dstCluster="0"/>
+		<fifo name="SPLIT22OUTPUT" 	 	fifoSize="108" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

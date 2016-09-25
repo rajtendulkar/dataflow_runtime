@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="13"> 
+		<actor instances="1" name="Source" function="Source" numPorts="1"/>
+		<actor instances="1" name="Radix0" function="Radix0"  numPorts="2"/>
+		<actor instances="1" name="Radix1" function="Radix1"  numPorts="2"/>
+		<actor instances="1" name="Radix2" function="Radix2"  numPorts="2"/>
+		<actor instances="1" name="Radix3" function="Radix3"  numPorts="2"/>
+		<actor instances="1" name="Radix4" function="Radix4"  numPorts="2"/>
+		<actor instances="1" name="Radix5" function="Radix5"  numPorts="2"/>
+		<actor instances="1" name="Radix6" function="Radix6"  numPorts="2"/>
+		<actor instances="1" name="Radix7" function="Radix7"  numPorts="2"/>
+		<actor instances="1" name="Radix8" function="Radix8"  numPorts="2"/>
+		<actor instances="1" name="Radix9" function="Radix9"  numPorts="2"/>
+		<actor instances="1" name="Radix10" function="Radix10" numPorts="2"/>
+		<actor instances="1" name="Output" function="Output"  numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="12">
+		<channel name="chnnl0"	 	channelSize="16" tokenSize="4" srcActor="Source"  srcPort="0" srcPortRate="16"  dstActor="Radix0"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl1"	 	channelSize="16" tokenSize="4" srcActor="Radix0"  srcPort="1" srcPortRate="16"  dstActor="Radix1"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl2"	 	channelSize="16" tokenSize="4" srcActor="Radix1"  srcPort="1" srcPortRate="16"  dstActor="Radix2"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl3"	 	channelSize="16" tokenSize="4" srcActor="Radix2"  srcPort="1" srcPortRate="16"  dstActor="Radix3"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl4"	 	channelSize="16" tokenSize="4" srcActor="Radix3"  srcPort="1" srcPortRate="16"  dstActor="Radix4"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl5"	 	channelSize="16" tokenSize="4" srcActor="Radix4"  srcPort="1" srcPortRate="16"  dstActor="Radix5"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl6"	 	channelSize="16" tokenSize="4" srcActor="Radix5"  srcPort="1" srcPortRate="16"  dstActor="Radix6"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl7"	 	channelSize="16" tokenSize="4" srcActor="Radix6"  srcPort="1" srcPortRate="16"  dstActor="Radix7"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl8"	 	channelSize="16" tokenSize="4" srcActor="Radix7"  srcPort="1" srcPortRate="16"  dstActor="Radix8"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl9"	 	channelSize="16" tokenSize="4" srcActor="Radix8"  srcPort="1" srcPortRate="16"  dstActor="Radix9"  dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl10" 	channelSize="16" tokenSize="4" srcActor="Radix9"  srcPort="1" srcPortRate="16"  dstActor="Radix10" dstPort="0" dstPortRate="16"/>
+		<channel name="chnnl11"	channelSize="16" tokenSize="4" srcActor="Radix10" srcPort="1" srcPortRate="16"  dstActor="Output"  dstPort="0" dstPortRate="16"/>
+	</graphChannels>
+
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="13">
+				<actor instance="0" name="Source"/>
+				<actor instance="0" name="Radix0"/>
+				<actor instance="0" name="Radix1"/>
+				<actor instance="0" name="Radix2"/>
+				<actor instance="0" name="Radix3"/>
+				<actor instance="0" name="Radix4"/>
+				<actor instance="0" name="Radix5"/>
+				<actor instance="0" name="Radix6"/>
+				<actor instance="0" name="Radix7"/>
+				<actor instance="0" name="Radix8"/>
+				<actor instance="0" name="Radix9"/>
+				<actor instance="0" name="Radix10"/>
+				<actor instance="0" name="Output"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="12">
+		<fifo name="chnnl0"	 	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl1"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl2"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl3"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl4"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl5"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl6"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl7"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl8"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl9"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl10" 	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+		<fifo name="chnnl11"	 fifoSize="16" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>

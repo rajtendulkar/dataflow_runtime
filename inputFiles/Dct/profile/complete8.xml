@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="10">
+		<actor instances="1" name="DctInputGenerate" function="DctInputGenerate" numPorts="1"/>
+		<actor instances="8" name="DCT1DFine-0" function="DCT1DFine0" numPorts="2"/>
+		<actor instances="1" name="DctJoiner-0" function="DctJoiner0" numPorts="2"/>
+		<actor instances="8" name="DCT1DFine-1" function="DCT1DFine1" numPorts="2"/>
+		<actor instances="1" name="DctJoiner-1" function="DctJoiner1" numPorts="2"/>
+		<actor instances="8" name="Idct1DRowFast" function="Idct1DRowFast" numPorts="2"/>
+		<actor instances="1" name="DctJoiner-2" function="DctJoiner2" numPorts="2"/>
+		<actor instances="8" name="Idct1DColFastFine" function="Idct1DColFastFine" numPorts="2"/>
+		<actor instances="1" name="DctJoiner-3" function="DctJoiner3" numPorts="2"/>
+		<actor instances="1" name="DctPrintOutput" function="DctPrintOutput" numPorts="1"/>
+	</graphActors>	
+	<graphChannels size="9">
+		<channel name="chnnl0" channelSize="64" dstActor="DCT1DFine-0" dstPort="0" dstPortRate="8" srcActor="DctInputGenerate" srcPort="0" srcPortRate="64" tokenSize="4"/>
+		<channel name="chnnl1" channelSize="64" dstActor="DctJoiner-0" dstPort="0" dstPortRate="64" srcActor="DCT1DFine-0" srcPort="1" srcPortRate="8" tokenSize="4"/>
+		<channel name="chnnl2" channelSize="64" dstActor="DCT1DFine-1" dstPort="0" dstPortRate="8" srcActor="DctJoiner-0" srcPort="1" srcPortRate="64" tokenSize="4"/>
+		<channel name="chnnl3" channelSize="64" dstActor="DctJoiner-1" dstPort="0" dstPortRate="64" srcActor="DCT1DFine-1" srcPort="1" srcPortRate="8" tokenSize="4"/>
+		<channel name="chnnl4" channelSize="64" dstActor="Idct1DRowFast" dstPort="0" dstPortRate="8" srcActor="DctJoiner-1" srcPort="1" srcPortRate="64" tokenSize="4"/>
+		<channel name="chnnl5" channelSize="64" dstActor="DctJoiner-2" dstPort="0" dstPortRate="64" srcActor="Idct1DRowFast" srcPort="1" srcPortRate="8" tokenSize="4"/>
+		<channel name="chnnl6" channelSize="64" dstActor="Idct1DColFastFine" dstPort="0" dstPortRate="8" srcActor="DctJoiner-2" srcPort="1" srcPortRate="64" tokenSize="4"/>
+		<channel name="chnnl7" channelSize="64" dstActor="DctJoiner-3" dstPort="0" dstPortRate="64" srcActor="Idct1DColFastFine" srcPort="1" srcPortRate="8" tokenSize="4"/>
+		<channel name="chnnl8" channelSize="64" dstActor="DctPrintOutput" dstPort="0" dstPortRate="64" srcActor="DctJoiner-3" srcPort="1" srcPortRate="64" tokenSize="4"/>
+	</graphChannels>
+
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="38">
+				<actor instance="0" name="DctInputGenerate"/>
+				<actor instance="0" name="DCT1DFine-0"/>
+				<actor instance="1" name="DCT1DFine-0"/>
+				<actor instance="2" name="DCT1DFine-0"/>
+				<actor instance="3" name="DCT1DFine-0"/>
+				<actor instance="4" name="DCT1DFine-0"/>
+				<actor instance="5" name="DCT1DFine-0"/>
+				<actor instance="6" name="DCT1DFine-0"/>
+				<actor instance="7" name="DCT1DFine-0"/>
+				<actor instance="0" name="DctJoiner-0"/>
+				<actor instance="0" name="DCT1DFine-1"/>
+				<actor instance="1" name="DCT1DFine-1"/>
+				<actor instance="2" name="DCT1DFine-1"/>
+				<actor instance="3" name="DCT1DFine-1"/>
+				<actor instance="4" name="DCT1DFine-1"/>
+				<actor instance="5" name="DCT1DFine-1"/>
+				<actor instance="6" name="DCT1DFine-1"/>
+				<actor instance="7" name="DCT1DFine-1"/>
+				<actor instance="0" name="DctJoiner-1"/>
+				<actor instance="0" name="Idct1DRowFast"/>
+				<actor instance="1" name="Idct1DRowFast"/>
+				<actor instance="2" name="Idct1DRowFast"/>
+				<actor instance="3" name="Idct1DRowFast"/>
+				<actor instance="4" name="Idct1DRowFast"/>
+				<actor instance="5" name="Idct1DRowFast"/>
+				<actor instance="6" name="Idct1DRowFast"/>
+				<actor instance="7" name="Idct1DRowFast"/>
+				<actor instance="0" name="DctJoiner-2"/>
+				<actor instance="0" name="Idct1DColFastFine"/>
+				<actor instance="1" name="Idct1DColFastFine"/>
+				<actor instance="2" name="Idct1DColFastFine"/>
+				<actor instance="3" name="Idct1DColFastFine"/>
+				<actor instance="4" name="Idct1DColFastFine"/>
+				<actor instance="5" name="Idct1DColFastFine"/>
+				<actor instance="6" name="Idct1DColFastFine"/>
+				<actor instance="7" name="Idct1DColFastFine"/>
+				<actor instance="0" name="DctJoiner-3"/>
+				<actor instance="0" name="DctPrintOutput"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="9">
+		<fifo name="chnnl0" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl1" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl2" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl3" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl4" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl5" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl6" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl7" srcCluster="0" dstCluster="0" fifoSize="64"/>
+		<fifo name="chnnl8" srcCluster="0" dstCluster="0" fifoSize="64"/>
+	</fifoallocation>
+</mapping>

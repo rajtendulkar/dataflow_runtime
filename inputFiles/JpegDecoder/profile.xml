@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3"> 
+		<actor instances="1" name="VLD" function = "VLD" numPorts="1"/>
+		<actor instances="12" name="IQ" function="IQ" numPorts="2"/>
+		<actor instances="12" name="COLOR" function="COLOR" numPorts="1"/>
+	</graphActors>
+	<graphChannels size="2">
+		<channel channelSize="36" dstActor="IQ" dstPort="0" dstPortRate="3" name="VLD2IQ" srcActor="VLD" srcPort="0" srcPortRate="36" tokenSize="268"/>
+		<channel channelSize="36" dstActor="COLOR" dstPort="0" dstPortRate="3" name="IQ2COL" srcActor="IQ" srcPort="1" srcPortRate="3" tokenSize="76"/>
+	</graphChannels>
+	<schedule size="1">
+		<cluster id = "0" size="1">
+			<processor id="0" size="25">
+				<actor instance="0" name="VLD"/>
+				<actor instance="0" name="IQ"/>
+				<actor instance="1" name="IQ"/>
+				<actor instance="2" name="IQ"/>
+				<actor instance="3" name="IQ"/>
+				<actor instance="4" name="IQ"/>
+				<actor instance="5" name="IQ"/>
+				<actor instance="6" name="IQ"/>
+				<actor instance="7" name="IQ"/>
+				<actor instance="8" name="IQ"/>
+				<actor instance="9" name="IQ"/>
+				<actor instance="10" name="IQ"/>
+				<actor instance="11" name="IQ"/>
+				<actor instance="0" name="COLOR"/>
+				<actor instance="1" name="COLOR"/>
+				<actor instance="2" name="COLOR"/>
+				<actor instance="3" name="COLOR"/>
+				<actor instance="4" name="COLOR"/>
+				<actor instance="5" name="COLOR"/>
+				<actor instance="6" name="COLOR"/>
+				<actor instance="7" name="COLOR"/>
+				<actor instance="8" name="COLOR"/>
+				<actor instance="9" name="COLOR"/>
+				<actor instance="10" name="COLOR"/>
+				<actor instance="11" name="COLOR"/>
+			</processor>
+		</cluster>
+	</schedule>
+	<fifoallocation size="2">
+		<fifo name="VLD2IQ" srcCluster="0" dstCluster="0" fifoSize="36"/>
+		<fifo name="IQ2COL" srcCluster="0" dstCluster="0" fifoSize="36"/>
+	</fifoallocation>
+</mapping>

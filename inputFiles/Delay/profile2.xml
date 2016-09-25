@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<graphActors size="3" numChannels="2">
+		<actor instances="1" name="IntSource"  function="IntSource"  numPorts="1"/>
+		<actor instances="1" name="Delay"      function="Delay"      numPorts="2"/>
+		<actor instances="1" name="IntPrinter" function="IntPrinter" numPorts="1"/>
+	</graphActors>
+
+	<graphChannels size="2">
+		<channel name="SRC2DELAY"   channelSize="6" tokenSize="4" srcActor="IntSource" srcPort="0" srcPortRate="1" dstActor="Delay"      dstPort="0" dstPortRate="1"/>
+		<channel name="DELAY2PRINT" channelSize="6" tokenSize="4" srcActor="Delay"     srcPort="1" srcPortRate="1" dstActor="IntPrinter" dstPort="0" dstPortRate="1"/>	
+	</graphChannels>		
+	
+	<schedule size="1">
+		<cluster id="0" size="1">
+			<processor id="0" size="30">
+				<actor instance="0" name="IntSource"/>
+				<actor instance="0" name="Delay"/>
+				<actor instance="0" name="IntPrinter"/>				
+				
+				<actor instance="1" name="IntSource"/>
+				<actor instance="1" name="Delay"/>
+				<actor instance="1" name="IntPrinter"/>
+				
+				<actor instance="2" name="IntSource"/>
+				<actor instance="2" name="Delay"/>
+				<actor instance="2" name="IntPrinter"/>
+				
+				<actor instance="3" name="IntSource"/>
+				<actor instance="3" name="Delay"/>
+				<actor instance="3" name="IntPrinter"/>
+				
+				<actor instance="4" name="IntSource"/>
+				<actor instance="4" name="Delay"/>
+				<actor instance="4" name="IntPrinter"/>
+				
+				<actor instance="5" name="IntSource"/>
+				<actor instance="5" name="Delay"/>
+				<actor instance="5" name="IntPrinter"/>
+				
+				<actor instance="6" name="IntSource"/>
+				<actor instance="6" name="Delay"/>
+				<actor instance="6" name="IntPrinter"/>
+				
+				<actor instance="7" name="IntSource"/>
+				<actor instance="7" name="Delay"/>
+				<actor instance="7" name="IntPrinter"/>
+				
+				<actor instance="8" name="IntSource"/>
+				<actor instance="8" name="Delay"/>
+				<actor instance="8" name="IntPrinter"/>
+				
+				<actor instance="9" name="IntSource"/>
+				<actor instance="9" name="Delay"/>
+				<actor instance="9" name="IntPrinter"/>
+			</processor>
+		</cluster>
+	</schedule>
+	
+	<fifoallocation size="2">
+		<fifo name="SRC2DELAY"   fifoSize="6" srcCluster="0" dstCluster="0"/>
+		<fifo name="DELAY2PRINT" fifoSize="6" srcCluster="0" dstCluster="0"/>
+	</fifoallocation>
+</mapping>
